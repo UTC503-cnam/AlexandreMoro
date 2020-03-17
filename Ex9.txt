@@ -1,0 +1,9 @@
+make "pos 0
+to star
+repeat 5 [ rt 18 fd 50 rt 144 fd 50 lt 90]
+penup
+make "pos :pos+150
+setxy :pos 0
+pendown
+END
+repeat 5 [ star ]
