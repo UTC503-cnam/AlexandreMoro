@@ -229,8 +229,7 @@ Hello, world!
 * Python 3
   
 ```Python
-\# Hello World program in Python
-print ("Hello World!");
+print ("Hello World!")
 ```
 >$python3 main.py  
 Hello World!
