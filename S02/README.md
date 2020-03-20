@@ -98,7 +98,7 @@ int factorielle(int n){
 
 int main(){
 	int n = 5;
-    int x = factorielle(n); // pour debug mais inutile autrement
+    int x = factorielle(n); // pour visu debug mais inutile autrement l'appel peut se faire dans la fonction printf
 	printf(" la factorielle (en récursif) de %d est égale à %d\n ", n, x);
 }
 
