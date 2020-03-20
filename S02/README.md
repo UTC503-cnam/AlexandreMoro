@@ -264,6 +264,9 @@ pendown
 END
 repeat 5 [ star ]
 ```
+> En sortie :  
+
+![Général des armées](https://tof.cx/images/2020/03/20/a1e97e579d93601538638c9f65c8e2e1.png)
 
 ![Je suis ton père](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Thomson_MO5-IMG_1732.jpg/800px-Thomson_MO5-IMG_1732.jpg)
 
