@@ -87,13 +87,21 @@ int main() {
 >Codez la factorielle avec une fonction récursive (sans instruction de bouclage)
 
 ```C
+#include <stdio.h>
+
 int factorielle(int n){
-	//codez ici
+	
+    while (n > 1) {
+        return n * factorielle( n - 1 );
+    }
 }
+
 int main(){
 	int n = 5;
-	printf(" la factorielle de %d est égale à %d\n"), n, factorielle(n));
+    int x = factorielle(n); // pour debug mais inutile autrement
+	printf(" la factorielle (en récursif) de %d est égale à %d\n ", n, x);
 }
+
 ```
 
 # Exercice 5
