@@ -239,7 +239,7 @@ operation(table2, tableCap3, cap, 3);
 
 ```
 
-> Alors je débute en programmation :D donc Je pense naïvement surement que procéder de cette manière permet de \
+> Alors je débute en programmation :D donc Je pense (naïvement surement) que procéder de cette manière permet de \
 > Rajouter des fonctions sans passer par un switch/case qui demanderait de modifier 2 parties et serait de plus\
 > en plus lent au fil des rajouts.
 
