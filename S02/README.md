@@ -45,7 +45,7 @@ int main(){
 	int n = 5;
 	int factorielle = n;
     int boucle = n;
-	// Codez ici
+
 
     while ( boucle > 1)
     {
