@@ -108,7 +108,7 @@ int main(){
 >Quelle limite identifiez-vous aux appels récursifs ?\
 >Indice : un site très populaire chez les codeurs porte son nom.\
 
-![](https://ispeakcode.com/blog/wp-content/uploads/2018/07/stackoverflow-1.png)
+![https://stackoverflow.com/](https://ispeakcode.com/blog/wp-content/uploads/2018/07/stackoverflow-1.png)
 ```
 Nous risquons une surchage de la pile (stack overflow), si trop d'appels sont effectués\
 il y aura saturation de l'espace alloué.
