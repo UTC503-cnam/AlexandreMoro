@@ -7,7 +7,7 @@ function power(e: number, p: number) {
 }
 
 function cap(e: number, cap: number) {
-    if (e > 3) {
+    if (e > cap) {
        return e = cap;
     } else {
         return e;
