@@ -17,8 +17,6 @@ boucle:
 
     }
 
-fin:
-
 printf(" La factorielle de %d est égale à %d\n", n, factorielle);
 
 }
