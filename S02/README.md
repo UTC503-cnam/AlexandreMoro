@@ -250,7 +250,9 @@ operation(table2, tableCap3, cap, 3);
 > Rajouter des fonctions sans passer par un switch/case qui demanderait de modifier 2 parties et serait de plus\
 > en plus lent au fil des rajouts.
 
-*Essai en C*
+*Essai en C*\
+>Je n'ai pas réussi à faire fonctionner la fonction pow()\
+>il semblerai que ce soit une erreur d'édition de lien (option -lm >de gcc)
 
 ```C
 #include <stdio.h>
