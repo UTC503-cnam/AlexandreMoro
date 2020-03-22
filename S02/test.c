@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <math.h>
+
 #define N 5
 
 
@@ -9,7 +11,10 @@ void main() {
     int intSize = sizeof(int);
     int size = sizeof(e)/sizeof(int);
 
-    printf( "%d %d" , size, byteSize );
+    printf( "%d %d \n" , size, byteSize );
+
+    printf("%d",(int)pow(2,2));
+
 
 }
 
