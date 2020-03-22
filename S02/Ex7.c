@@ -7,12 +7,12 @@ int multiply (int valeur, int coef ){
     return valeur * coef;
 }
 
-// int power (int valeur, int exp) {
+int power (int valeur, int exp) {
 
-//     double result = pow((double)valeur,(double)exp);
-//     return (int) result;
+    double result = pow((double)valeur,(double)exp);
+    return (int) result;
 
-// }
+}
 
 int cap (int valeur, int cap) {
     if (valeur > cap) {
@@ -42,8 +42,8 @@ int main( int argc, char *argv[] ) {
     int etriple[N];
     operation(e,etriple,multiply,3);
 
-    // int ePow2[N] = {};
-    // operation(e,ePow2,power,2);
+    int ePow2[N] = {};
+    operation(e,ePow2,power,2);
 
     int eCap[N];
     operation(e,eCap,cap,3);
