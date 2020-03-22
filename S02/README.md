@@ -254,6 +254,22 @@ operation(table2, tableCap3, cap, 3);
 >Je n'ai pas réussi à faire fonctionner la fonction pow()\
 >il semblerai que ce soit une erreur d'édition de lien (option -lm >de gcc)
 
+***********************FIX **************************\
+il faut rajouter le paramètre -lm
+dans le fichier tasks.json
+```
+            "args": [
+                "-g",
+                "-lm",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-lm",
+            ],
+```
+************************** **************************\
+
+
 ```C
 #include <stdio.h>
 #include <math.h>
