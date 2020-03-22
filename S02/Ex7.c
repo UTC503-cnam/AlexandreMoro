@@ -7,7 +7,7 @@ int multiply (int valeur, int coef ){
     return valeur * coef;
 }
 
-int power (int valeur, int exp) {
+int power ( int valeur, int exp ) {
 
     double result = pow((double)valeur,(double)exp);
     return (int) result;
