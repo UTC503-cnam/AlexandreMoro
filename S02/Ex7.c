@@ -32,22 +32,23 @@ void operation ( int inpuTable[], int outputTable[], int (*ptr)(), int option ){
 
 }
 
-void main() {
+int main( int argc, char *argv[] ) {
 
     int e[N] = {1,5,2,4,3};
 
-    int eDouble[N] = {};
+    int eDouble[N];
     operation(e,eDouble,multiply,2);
 
-    int etriple[N] = {};
+    int etriple[N];
     operation(e,etriple,multiply,3);
 
     // int ePow2[N] = {};
     // operation(e,ePow2,power,2);
 
-    int eCap[N] = {};
+    int eCap[N];
     operation(e,eCap,cap,3);
 
+    return 0;
 
 
 }
