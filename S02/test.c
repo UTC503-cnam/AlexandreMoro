@@ -1,12 +1,15 @@
 #include <stdio.h>
 #define N 5
 
+
 void main() {
 
-{ 
-    int arr[] = { 1, 2, 3, 4, 7, 98, 0, 12, 35, 99, 14 }; 
-    printf("Number of elements:%lu ", sizeof(arr) / sizeof(arr[0])); 
-    return 0; 
-} 
+    int e[N] = {1,5,2,4,3};
+    int byteSize = sizeof(e);
+    int intSize = sizeof(int);
+    int size = sizeof(e)/sizeof(int);
+
+    printf( "%d %d" , size, byteSize );
+
 }
 
