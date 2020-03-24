@@ -8,3 +8,8 @@ function defautSiNul(x : number, defaut: number) : number {
     return x;
 }
 
+let maValeurParDefaut = 4;
+let maValeur = 1;
+console.log(defautSiNul(maValeur, maValeurParDefaut));
+maValeur= null;
+console.log(defautSiNul(maValeur, maValeurParDefaut));
