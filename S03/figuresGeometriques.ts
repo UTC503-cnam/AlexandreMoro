@@ -20,14 +20,18 @@ abstract class Figure {
     protected abstract area();
     protected abstract perimeter();
 
-
-    report() {
+    /**
+     * Return a basic report with informations from the construction
+     * this report is append with the overload method on the child class
+     * @returns report as a string
+     */
+    report() :string {
 
         let report: string;
 
         if (this.size2 == null) {
             report = "This figure is a triangle with a side length of: " + 
-            this.size
+            this.size + ".";
         } else {
             report = "This figure is a Diamond with a first diagonal of: "
             + this.size + " and a second diagonal of: " + this.size2 + ".";
@@ -62,8 +66,8 @@ class Triangle extends Figure {
         return this.size * 3;
     }
 
-    report() {
-        super.report()
+    report() :string {
+        return super.report() + " the area is: " + this.area() + " and the perimeter is: " + this .perimeter() + ".";
     }
 
 }
@@ -112,8 +116,13 @@ class Diamond extends Figure {
     /**
      * display figure's report from its characteristics
      */
-    report() {
+     report() : string {
 
+        if (this.isSqare()) {
+            return super.report() + " the area is: " + this.area() + " and the perimeter is: " + this .perimeter() + " and the diamond is in fact ... a sqare";
+        } else {
+            return super.report() + " the area is: " + this.area() + " and the perimeter is: " + this .perimeter();
+        }
     }
 
 }

@@ -22,6 +22,23 @@ var Figure = /** @class */ (function () {
         this.size = size;
         this.size2 = size2;
     }
+    /**
+     * Return a basic report with informations from the construction
+     * this report is append with the overload method on the child class
+     * @returns report as a string
+     */
+    Figure.prototype.report = function () {
+        var report;
+        if (this.size2 == null) {
+            report = "This figure is a triangle with a side length of: " +
+                this.size + ".";
+        }
+        else {
+            report = "This figure is a Diamond with a first diagonal of: "
+                + this.size + " and a second diagonal of: " + this.size2 + ".";
+        }
+        return report;
+    };
     return Figure;
 }());
 var Triangle = /** @class */ (function (_super) {
@@ -48,13 +65,16 @@ var Triangle = /** @class */ (function (_super) {
         return this.size * 3;
     };
     Triangle.prototype.report = function () {
+        return _super.prototype.report.call(this) + " the area is: " + this.area() + " and the perimeter is: " + this.perimeter() + ".";
     };
     return Triangle;
 }(Figure));
 var Diamond = /** @class */ (function (_super) {
     __extends(Diamond, _super);
     function Diamond() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = "Diamond";
+        return _this;
     }
     /**
      * Return if the diamond is a square
@@ -81,20 +101,36 @@ var Diamond = /** @class */ (function (_super) {
     Diamond.prototype.area = function () {
         return (this.size * this.size2) / 2;
     };
+    /**
+     * Return the perimeter of a diamond
+     * formula : 2(sqrt(sqr(d)+sqr(D)))
+     * @param size - first diamond's diagonal
+     * @param size2 - second diamond's diagonal
+     * @returns the calculation of the perimeter
+     */
     Diamond.prototype.perimeter = function () {
+        return 2 * (Math.sqrt(Math.pow(this.size, 2) * Math.pow(this.size2, 2)));
     };
+    /**
+     * display figure's report from its characteristics
+     */
     Diamond.prototype.report = function () {
+        if (this.isSqare()) {
+            return _super.prototype.report.call(this) + " the area is: " + this.area() + " and the perimeter is: " + this.perimeter() + " and the diamond is in fact ... a sqare";
+        }
+        else {
+            return _super.prototype.report.call(this) + " the area is: " + this.area() + " and the perimeter is: " + this.perimeter();
+        }
     };
     return Diamond;
 }(Figure));
 var t1 = new Triangle(5);
 var t2 = new Triangle(10);
-var l1 = new Diamond(5, 6); // diagonale 1, diagonale 2
-console.log(l1.isSqare());
-console.log(l1.area());
-// let l2 = new losange(4, 4);
-// let figures: Figure[] = [t1, t2, l1, l2];
-// for (let f of figures) {
-//     console.log(f.report());
-// }
+var l1 = new Diamond(5, 6); // diag 1, diag 2
+var l2 = new Diamond(4, 4);
+var figures = [t1, t2, l1, l2];
+for (var _i = 0, figures_1 = figures; _i < figures_1.length; _i++) {
+    var f = figures_1[_i];
+    console.log(f.report());
+}
 debugger;
