@@ -19,7 +19,21 @@ abstract class Figure {
 
     protected abstract area();
     protected abstract perimeter();
+
+
     report() {
+
+        let report: string;
+
+        if (this.size2 == null) {
+            report = "This figure is a triangle with a side length of: " + 
+            this.size
+        } else {
+            report = "This figure is a Diamond with a first diagonal of: "
+            + this.size + " and a second diagonal of: " + this.size2 + ".";
+        }
+
+        return report;
 
     }
 
@@ -49,12 +63,14 @@ class Triangle extends Figure {
     }
 
     report() {
-
+        super.report()
     }
 
 }
 
 class Diamond extends Figure {
+
+    name = "Diamond";
 
     /**
      * Return if the diamond is a square
