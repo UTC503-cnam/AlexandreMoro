@@ -15,15 +15,15 @@ var Figure = /** @class */ (function () {
     /**
      * Constructor of the figure class
      * Geometric rule : all side of a figure are equals
-     * @param size needed, size of the side of a triangle or size of a digonal for a diamond
-     * @param size2 optionnal, diagonal size of the diamond
+     * @param size needed, size of a triangle side or size of a diamond's first diagonal
+     * @param size2 optionnal (not needed for atriangle), diamond's second diagonal
      */
     function Figure(size, size2) {
         this.size = size;
         this.size2 = size2;
     }
     /**
-     * Return a basic report with informations from the construction
+     * Return a basic report with informations from the constructor
      * this report is append with the overload method on the child class
      * @returns report as a string
      */
@@ -64,6 +64,9 @@ var Triangle = /** @class */ (function (_super) {
     Triangle.prototype.perimeter = function () {
         return this.size * 3;
     };
+    /**
+     * @returns append basic report from the mother class with object characs
+     */
     Triangle.prototype.report = function () {
         return _super.prototype.report.call(this) + " the area is: " + this.area() + " and the perimeter is: " + this.perimeter() + ".";
     };
@@ -99,7 +102,7 @@ var Diamond = /** @class */ (function (_super) {
      * @returns the calculation of the area
      */
     Diamond.prototype.area = function () {
-        return (this.size * this.size2) / 2;
+        return ((this.size * this.size2) / 2);
     };
     /**
      * Return the perimeter of a diamond
@@ -109,10 +112,10 @@ var Diamond = /** @class */ (function (_super) {
      * @returns the calculation of the perimeter
      */
     Diamond.prototype.perimeter = function () {
-        return 2 * (Math.sqrt(Math.pow(this.size, 2) * Math.pow(this.size2, 2)));
+        return (2 * (Math.sqrt(Math.pow(this.size, 2) + Math.pow(this.size2, 2))));
     };
     /**
-     * display figure's report from its characteristics
+     * @returns append basic report from the mother class with object characs
      */
     Diamond.prototype.report = function () {
         if (this.isSqare()) {
