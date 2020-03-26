@@ -19,7 +19,7 @@ abstract class Figure {
 
     protected abstract area();
     protected abstract perimeter();
-    
+
     report() {
 
     }
@@ -102,8 +102,6 @@ class Diamond extends Figure {
     }
 
 }
-
-
 
 let t1 = new Triangle(5);
 let t2 = new Triangle(10);
