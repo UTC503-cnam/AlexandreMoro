@@ -19,7 +19,6 @@ abstract class Figure {
 
     protected abstract area();
     protected abstract perimeter();
-
     report() {
 
     }
