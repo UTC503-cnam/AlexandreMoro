@@ -37,9 +37,7 @@ abstract class Figure {
             report = "This figure is a Diamond with a first diagonal of: "
             + this.size + " and a second diagonal of: " + this.size2 + ".";
         }
-
         return report;
-
     }
 
 }
@@ -131,15 +129,15 @@ class Diamond extends Figure {
 
 }
 
+// creating objects
 let t1 = new Triangle(5);
 let t2 = new Triangle(10);
 let l1 = new Diamond(5, 6); // diag 1, diag 2
 let l2 = new Diamond(4, 4);
+
 
 let figures: Figure[] = [t1, t2, l1, l2];
 
 for (let f of figures) {
 console.log(f.report());
 }
-
-debugger;
