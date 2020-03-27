@@ -51,7 +51,7 @@ class Triangle extends Figure {
      * @param side - side of a triangle
      * @returns the calculation of the area
      */
-    area() {
+    area() :number {
         return ((Math.sqrt(3) / 4) * Math.pow(this.size, 2));
     }
 
@@ -61,7 +61,7 @@ class Triangle extends Figure {
      * @param size - size of the the triangle's side
      * @returns the calculation of the perimeter
      */
-    perimeter() {
+    perimeter() :number {
         return this.size * 3;
     }
 
@@ -76,8 +76,6 @@ class Triangle extends Figure {
 
 class Diamond extends Figure {
 
-    name = "Diamond";
-
     /**
      * Return if the diamond is a square
      * formula : If the 2 diagonals are equal, this is a sqare
@@ -85,7 +83,7 @@ class Diamond extends Figure {
      * @param size2 - size of the second diagonal
      * @returns true or false
      */
-    public isSqare() {
+    public isSqare(): boolean{
         if (this.size == this.size2) {
             return true;
         } else {
@@ -100,7 +98,7 @@ class Diamond extends Figure {
      * @param size2 - size of the second diagonal
      * @returns the calculation of the area
      */
-    area() {
+    area(): number {
         return ((this.size * this.size2) /2);
     }
 
@@ -111,14 +109,14 @@ class Diamond extends Figure {
      * @param size2 - second diamond's diagonal  
      * @returns the calculation of the perimeter
      */
-    perimeter() {
+    perimeter(): number {
         return (2 * (Math.sqrt(Math.pow(this.size, 2) + Math.pow(this.size2, 2))));
     }
 
     /**
      * @returns append basic report from the mother class with object characs
      */
-     report() : string {
+     report(): string {
 
         if (this.isSqare()) {
             return super.report() + " the area is: " + this.area() + " and the perimeter is: " + this .perimeter() + " and the diamond is in fact ... a sqare";

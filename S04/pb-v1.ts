@@ -1,15 +1,15 @@
-// Retourne x si non nuln defaut sinon.
-// x et défaut sont des nombres
-
-function defautSiNul(x : number, defaut: number) : number {
+function defautSiNul(x: any, defaut: any): any {
     if (x == null)
-    return defaut;
+        return defaut;
     else
-    return x;
+        return x;
 }
-
 let maValeurParDefaut = 4;
 let maValeur = 1;
-console.log(defautSiNul(maValeur, maValeurParDefaut));
-maValeur= null;
-console.log(defautSiNul(maValeur, maValeurParDefaut));
+let r: number = defautSiNul(maValeur, maValeurParDefaut);
+console.log(r);
+// On mélange les types string et number.
+// Que va-t-on récupérer ?
+let maValeur2 = "Deux";
+r = defautSiNul(maValeur2, maValeurParDefaut);
+console.log(r);
