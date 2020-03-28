@@ -73,7 +73,6 @@ class Triangle extends Figure {
      */
     report() :string {
         return super.report()
-        + 
         + "Side size: " + this.side() + "\n"
         + "Area:" + this.area().toFixed(2) + "\n"
         + "Perimeter: " + this .perimeter().toFixed(2) + ".\n";
