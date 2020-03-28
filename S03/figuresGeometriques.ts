@@ -107,7 +107,7 @@ class Rhombus extends Figure {
     }
 
     /**
-     * Return the area of an equilateral triangle
+     * Return the area of a rhombus
      * formula : (d * D) / 2
      * @param size  - size of the first diagonal
      * @param size2 - size of the second diagonal
