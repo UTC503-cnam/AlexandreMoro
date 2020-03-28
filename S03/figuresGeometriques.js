@@ -23,19 +23,15 @@ var Figure = /** @class */ (function () {
         this.size2 = size2;
     }
     /**
-     * Return a basic report with informations from the constructor
-     * this report is append with the overload method on the child class
-     * @returns report as a string
+     * @returns retune as a string a basic report
      */
     Figure.prototype.report = function () {
         var report;
         if (this.size2 == null) {
-            report = "This figure is a triangle with a side length of: " +
-                this.size + ".";
+            report = "This figure is a triangle\n";
         }
         else {
-            report = "This figure is a Diamond with a first diagonal of: "
-                + this.size + " and a second diagonal of: " + this.size2 + ".";
+            report = "This figure is a Rhombus\n";
         }
         return report;
     };
@@ -46,6 +42,12 @@ var Triangle = /** @class */ (function (_super) {
     function Triangle() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    /**
+     * @returns Triangle's side size
+     */
+    Triangle.prototype.side = function () {
+        return this.size;
+    };
     /**
      * Return the area of an equilateral triangle
      * formula : (sqrt(3)/4)*sqr(side)
@@ -68,17 +70,25 @@ var Triangle = /** @class */ (function (_super) {
      * @returns append basic report from the mother class with object characs
      */
     Triangle.prototype.report = function () {
-        return _super.prototype.report.call(this) + " the area is: " + this.area() + " and the perimeter is: " + this.perimeter() + ".";
+        return _super.prototype.report.call(this)
+            +
+                +"Side size: " + this.side() + "\n"
+            + "Area:" + this.area().toFixed(2) + "\n"
+            + "Perimeter: " + this.perimeter().toFixed(2) + ".\n";
     };
     return Triangle;
 }(Figure));
-var Diamond = /** @class */ (function (_super) {
-    __extends(Diamond, _super);
-    function Diamond() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = "Diamond";
-        return _this;
+var Rhombus = /** @class */ (function (_super) {
+    __extends(Rhombus, _super);
+    function Rhombus() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
+    /**
+     * @returns - Rhombus Side size
+     */
+    Rhombus.prototype.side = function () {
+        return Math.sqrt(Math.pow(this.size / 2, 2) + (Math.pow(this.size2 / 2, 2)));
+    };
     /**
      * Return if the diamond is a square
      * formula : If the 2 diagonals are equal, this is a sqare
@@ -86,7 +96,7 @@ var Diamond = /** @class */ (function (_super) {
      * @param size2 - size of the second diagonal
      * @returns true or false
      */
-    Diamond.prototype.isSqare = function () {
+    Rhombus.prototype.isSqare = function () {
         if (this.size == this.size2) {
             return true;
         }
@@ -101,7 +111,7 @@ var Diamond = /** @class */ (function (_super) {
      * @param size2 - size of the second diagonal
      * @returns the calculation of the area
      */
-    Diamond.prototype.area = function () {
+    Rhombus.prototype.area = function () {
         return ((this.size * this.size2) / 2);
     };
     /**
@@ -111,29 +121,36 @@ var Diamond = /** @class */ (function (_super) {
      * @param size2 - second diamond's diagonal
      * @returns the calculation of the perimeter
      */
-    Diamond.prototype.perimeter = function () {
+    Rhombus.prototype.perimeter = function () {
         return (2 * (Math.sqrt(Math.pow(this.size, 2) + Math.pow(this.size2, 2))));
     };
     /**
      * @returns append basic report from the mother class with object characs
      */
-    Diamond.prototype.report = function () {
+    Rhombus.prototype.report = function () {
         if (this.isSqare()) {
-            return _super.prototype.report.call(this) + " the area is: " + this.area() + " and the perimeter is: " + this.perimeter() + " and the diamond is in fact ... a sqare";
+            return _super.prototype.report.call(this)
+                + "This rhombus is a square\n"
+                + "Side Size: " + this.side().toFixed(2) + "\n"
+                + "Area: " + this.area().toFixed(2) + "\n"
+                + "Perimeter: " + this.perimeter().toFixed(2) + "\n";
         }
         else {
-            return _super.prototype.report.call(this) + " the area is: " + this.area() + " and the perimeter is: " + this.perimeter();
+            return _super.prototype.report.call(this)
+                + "Side size: " + this.side().toFixed(2) + "\n"
+                + "Area: " + this.area().toFixed(2) + "\n"
+                + "Perimeter: " + this.perimeter().toFixed(2) + "\n";
         }
     };
-    return Diamond;
+    return Rhombus;
 }(Figure));
+// creating objects
 var t1 = new Triangle(5);
 var t2 = new Triangle(10);
-var l1 = new Diamond(5, 6); // diag 1, diag 2
-var l2 = new Diamond(4, 4);
+var l1 = new Rhombus(5, 6); // diag 1, diag 2
+var l2 = new Rhombus(4, 4);
 var figures = [t1, t2, l1, l2];
 for (var _i = 0, figures_1 = figures; _i < figures_1.length; _i++) {
     var f = figures_1[_i];
     console.log(f.report());
 }
-debugger;
