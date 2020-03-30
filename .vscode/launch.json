@@ -8,7 +8,7 @@
         "type": "node",
         "request": "launch",
         "name": "Launch Program",
-        "program": "${workspaceFolder}/S03/figuresGeometriques.js",
+        "program": "${workspaceFolder}/S04/ex1.js",
         "skipFiles": [
             "<node_internals>/**"
         ]
