@@ -2,7 +2,7 @@ interface Mesurable {
     length: number;
 }
 
-class Trajet implements Mesurable {
+class Trajet implements Mesurable{
 
     private nom: string;
     length: number;
@@ -20,22 +20,40 @@ class Trajet implements Mesurable {
 
 class MinMax<T extends Mesurable> {
 
+    private minMax : Array<T> = new Array();
+
     constructor(t: Array<T>){
+
         this.computeMinMax(t);
+
     }
 
-    private computeMinMax(t: Array<T>){
+    private computeMinMax(t: Array<T>) {
+
+        let tempMinMax : Array<T> = new Array(t[0],t[0]);
+
         for(let e of t){
 
+            if (e.length < tempMinMax[0].length) {
+                tempMinMax[0] = e;
+            }
+
+            if (e.length > tempMinMax[1].length) {
+                tempMinMax[1] = e
+            }
         }
+
+        this.minMax[0] = tempMinMax[0];
+        this.minMax[1] = tempMinMax[1];
+
     }
 
-    getMin(): {
-
+    getMin(){
+        return this.minMax[0];
     }
 
     getMax(){
-
+        return this.minMax[1];
     }
 }
 
@@ -45,8 +63,6 @@ for (let e in trajets) {
 
     console.log(trajets[e].toString());
 }
-
-debugger;
 
 let trajetMinMax = new MinMax(trajets);
 
