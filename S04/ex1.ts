@@ -59,11 +59,6 @@ class MinMax<T extends Mesurable> {
 
 let trajets: Array<Trajet> = new Array(new Trajet("a", 271), new Trajet("b", 161), new Trajet("c", 314));
 
-for (let e in trajets) {
-
-    console.log(trajets[e].toString());
-}
-
 let trajetMinMax = new MinMax(trajets);
 
 console.log(`Le plus grand trajet est : ${trajetMinMax.getMax()}`);
@@ -71,7 +66,7 @@ console.log(`Le plus petit trajet est : ${trajetMinMax.getMin()}`);
 
 let chaines: Array<String> = new Array("chaineDe9", "chDe5", "grandeChaineDe16");
 
-// let chaineMinMax = 
-// console.log(`La plus grande chaine est : ${chaineMinMax.getMax()}`);
-// console.log(`La plus petite chaine est : ${chaineMinMax.getMin()}`);
+let chaineMinMax = new MinMax(chaines);
+console.log(`La plus grande chaine est : ${chaineMinMax.getMax()}`);
+console.log(`La plus petite chaine est : ${chaineMinMax.getMin()}`);
 
