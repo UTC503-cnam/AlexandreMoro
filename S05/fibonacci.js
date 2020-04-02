@@ -64,12 +64,12 @@ for (var i = 2; i <= query; i++) {
     collection.addItem(number2);
 }
 var iterator = collection.getIterator();
-console.log("Straight Traversal :");
+console.log("Normal");
 while (iterator.valid()) {
     console.log(iterator.next());
 }
 console.log("-----");
-console.log("Reverse traversal: ");
+console.log("Reverse");
 var reverseIterator = collection.getreverseIterator();
 while (reverseIterator.valid()) {
     console.log(reverseIterator.next());
