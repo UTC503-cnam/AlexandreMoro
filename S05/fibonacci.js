@@ -1,25 +1,7 @@
-/**
- * Iterator Design Pattern
- *
- * Intent: Lets you traverse elements of a collection without exposing its
- * underlying representation (list, stack, tree, etc.).
- */
-/**
- * Concrete Iterators implement various traversal algorithms. These classes
- * store the current traversal position at all times.
- */
-var AlphabeticalOrderIterator = /** @class */ (function () {
-    function AlphabeticalOrderIterator(collection, reverse) {
+var fibonacciIterator = /** @class */ (function () {
+    function fibonacciIterator(collection, reverse) {
         if (reverse === void 0) { reverse = false; }
-        /**
-         * Stores the current traversal position. An iterator may have a lot of
-         * other fields for storing iteration state, especially when it is supposed
-         * to work with a particular kind of collection.
-         */
-        this.position = 0;
-        /**
-         * This variable indicates the traversal direction.
-         */
+        this.position = 2;
         this.reverse = false;
         this.collection = collection;
         this.reverse = reverse;
@@ -27,72 +9,68 @@ var AlphabeticalOrderIterator = /** @class */ (function () {
             this.position = collection.getCount() - 1;
         }
     }
-    AlphabeticalOrderIterator.prototype.rewind = function () {
-        this.position = this.reverse ?
-            this.collection.getCount() - 1 :
-            0;
+    fibonacciIterator.prototype.rewind = function () {
+        this.position = this.reverse ? this.collection.getCount() - 1 : 0; // surement a retoucher car on démarre à 2 :D
     };
-    AlphabeticalOrderIterator.prototype.current = function () {
+    fibonacciIterator.prototype.current = function () {
         return this.collection.getItems()[this.position];
     };
-    AlphabeticalOrderIterator.prototype.key = function () {
+    fibonacciIterator.prototype.key = function () {
         return this.position;
     };
-    AlphabeticalOrderIterator.prototype.next = function () {
+    fibonacciIterator.prototype.next = function () {
         var item = this.collection.getItems()[this.position];
         this.position += this.reverse ? -1 : 1;
         return item;
     };
-    AlphabeticalOrderIterator.prototype.valid = function () {
+    fibonacciIterator.prototype.valid = function () {
         if (this.reverse) {
-            return this.position >= 0;
+            return this.position >= 0; // a modifier  
         }
         return this.position < this.collection.getCount();
     };
-    return AlphabeticalOrderIterator;
+    return fibonacciIterator;
 }());
-/**
- * Concrete Collections provide one or several methods for retrieving fresh
- * iterator instances, compatible with the collection class.
- */
-var WordsCollection = /** @class */ (function () {
-    function WordsCollection() {
+var fiboCollec = /** @class */ (function () {
+    function fiboCollec() {
         this.items = [];
     }
-    WordsCollection.prototype.getItems = function () {
+    fiboCollec.prototype.getItems = function () {
         return this.items;
     };
-    WordsCollection.prototype.getCount = function () {
+    fiboCollec.prototype.getCount = function () {
         return this.items.length;
     };
-    WordsCollection.prototype.addItem = function (item) {
+    fiboCollec.prototype.addItem = function (item) {
         this.items.push(item);
     };
-    WordsCollection.prototype.getIterator = function () {
-        return new AlphabeticalOrderIterator(this);
+    fiboCollec.prototype.getIterator = function () {
+        return new fibonacciIterator(this);
     };
-    WordsCollection.prototype.getReverseIterator = function () {
-        return new AlphabeticalOrderIterator(this, true);
+    fiboCollec.prototype.getreverseIterator = function () {
+        return new fibonacciIterator(this, true);
     };
-    return WordsCollection;
+    return fiboCollec;
 }());
-/**
- * The client code may or may not know about the Concrete Iterator or Collection
- * classes, depending on the level of indirection you want to keep in your
- * program.
- */
-var collection = new WordsCollection();
-collection.addItem('First');
-collection.addItem('Second');
-collection.addItem('Third');
+var collection = new fiboCollec();
+var query = 20;
+var number0 = 0;
+var number1 = 1;
+var number2 = 0;
+for (var i = 2; i <= query; i++) {
+    number2 = number1 + number0;
+    number0 = number1;
+    number1 = number2;
+    collection.addItem(number2);
+}
 var iterator = collection.getIterator();
-console.log('Straight traversal:');
+console.log("Straight Traversal :");
 while (iterator.valid()) {
     console.log(iterator.next());
 }
-console.log('');
-console.log('Reverse traversal:');
-var reverseIterator = collection.getReverseIterator();
+console.log("-----");
+console.log("Reverse traversal: ");
+var reverseIterator = collection.getreverseIterator();
 while (reverseIterator.valid()) {
     console.log(reverseIterator.next());
 }

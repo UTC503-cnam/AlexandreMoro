@@ -94,26 +94,30 @@ class fiboCollec implements Aggregator{
 const collection = new fiboCollec();
 
 let query: number = 20;
+let number0: number = 0;
+let number1: number = 1;
+let number2: number = 0;
+
 
 for (let i: number = 2; i <= query; i++ ) {
 
-    n2 = n1 + n0;
-    n0 = n1;
-    n1 = n2;
+    number2 = number1 + number0;
+    number0 = number1;
+    number1 = number2;
 
-    collection.addItem(n2);
+    collection.addItem(number2);
 }
 
 const iterator = collection.getIterator();
 
-console.log("Straight Traversal :");
+console.log("Normal");
 
 while (iterator.valid()) {
     console.log(iterator.next());
 }
 
 console.log("-----");
-console.log("Reverse traversal: ");
+console.log("Reverse");
 
 const reverseIterator = collection.getreverseIterator();
 
