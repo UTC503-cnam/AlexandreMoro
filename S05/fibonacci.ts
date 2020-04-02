@@ -42,4 +42,5 @@ class fibonacciIterator implements Iterator<number> {
     }
 
     
+    
 }
