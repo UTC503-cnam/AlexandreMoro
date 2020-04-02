@@ -38,7 +38,7 @@ class fibonacciIterator implements Iterator<number> {
     }
 
     public rewind() {
-        this.position = this.reverse ? this.collection.getCount() - 1 : 0; // surement a retoucher car on démarre à 2 :D
+        this.position = this.reverse ? this.collection.getCount() - 1 : 0;
     }
 
     public current() : number {
@@ -57,7 +57,7 @@ class fibonacciIterator implements Iterator<number> {
     
     public valid(): boolean {
         if (this.reverse) {
-            return this.position >= 0; // a modifier  
+            return this.position >= 0;  
         }
 
         return this.position < this.collection.getCount();

@@ -10,7 +10,7 @@ var fibonacciIterator = /** @class */ (function () {
         }
     }
     fibonacciIterator.prototype.rewind = function () {
-        this.position = this.reverse ? this.collection.getCount() - 1 : 0; // surement a retoucher car on démarre à 2 :D
+        this.position = this.reverse ? this.collection.getCount() - 1 : 0;
     };
     fibonacciIterator.prototype.current = function () {
         return this.collection.getItems()[this.position];
@@ -25,7 +25,7 @@ var fibonacciIterator = /** @class */ (function () {
     };
     fibonacciIterator.prototype.valid = function () {
         if (this.reverse) {
-            return this.position >= 0; // a modifier  
+            return this.position >= 0; 
         }
         return this.position < this.collection.getCount();
     };
