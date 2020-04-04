@@ -8,7 +8,7 @@
         "type": "node",
         "request": "launch",
         "name": "Launch Program",
-        "program": "${workspaceFolder}/S05/fibonaccibase.js",
+        "program": "${workspaceFolder}/S05/fibonacci.js",
         "skipFiles": [
             "<node_internals>/**"
         ]
