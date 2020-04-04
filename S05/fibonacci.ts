@@ -18,6 +18,7 @@ interface Aggregator {
 
 }
 
+
 class fibonacciIterator implements Iterator<number> {
 
     private collection: fiboCollec;
@@ -114,7 +115,10 @@ class fiboCollec implements Aggregator{
 
 }
 
+
 const collection = new fiboCollec(20);
+
+const subject = new ConcreteSubject();
 
 const iterator = collection.getIterator();
 
