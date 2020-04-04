@@ -22,7 +22,7 @@ class fibonacciIterator implements Iterator<number> {
 
     private collection: fiboCollec;
 
-    private position: number = 2;
+    private position: number = 0;
 
     private reverse: boolean = false;
 
@@ -67,6 +67,12 @@ class fibonacciIterator implements Iterator<number> {
 
 class fiboCollec implements Aggregator{
 
+ 
+
+    constructor(fNumber: number) {
+        this.fibAlgoToCollec(fNumber);
+    }
+
     private items: number[] = [];
 
     public getItems(): number[] {
@@ -87,26 +93,28 @@ class fiboCollec implements Aggregator{
 
     public getreverseIterator(): Iterator<number> {
         return new fibonacciIterator(this, true);
+    }
+
+    private fibAlgoToCollec(fnumber: number): void {
+
+        let number0: number = 0;
+        let number1: number = 1;
+        let number2: number = 0;
+
+        for (let i: number = 2; i <= fnumber; i++ ) {
+
+            number2 = number1 + number0;
+            number0 = number1;
+            number1 = number2;
+        
+            this.addItem(number2);
+        }
 
     }
+
 }
 
-const collection = new fiboCollec();
-
-let query: number = 20;
-let number0: number = 0;
-let number1: number = 1;
-let number2: number = 0;
-
-
-for (let i: number = 2; i <= query; i++ ) {
-
-    number2 = number1 + number0;
-    number0 = number1;
-    number1 = number2;
-
-    collection.addItem(number2);
-}
+const collection = new fiboCollec(20);
 
 const iterator = collection.getIterator();
 

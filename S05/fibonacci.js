@@ -1,7 +1,7 @@
 var fibonacciIterator = /** @class */ (function () {
     function fibonacciIterator(collection, reverse) {
         if (reverse === void 0) { reverse = false; }
-        this.position = 2;
+        this.position = 0;
         this.reverse = false;
         this.collection = collection;
         this.reverse = reverse;
@@ -25,15 +25,16 @@ var fibonacciIterator = /** @class */ (function () {
     };
     fibonacciIterator.prototype.valid = function () {
         if (this.reverse) {
-            return this.position >= 0; 
+            return this.position >= 0;
         }
         return this.position < this.collection.getCount();
     };
     return fibonacciIterator;
 }());
 var fiboCollec = /** @class */ (function () {
-    function fiboCollec() {
+    function fiboCollec(fNumber) {
         this.items = [];
+        this.fibAlgoToCollec(fNumber);
     }
     fiboCollec.prototype.getItems = function () {
         return this.items;
@@ -50,19 +51,20 @@ var fiboCollec = /** @class */ (function () {
     fiboCollec.prototype.getreverseIterator = function () {
         return new fibonacciIterator(this, true);
     };
+    fiboCollec.prototype.fibAlgoToCollec = function (fnumber) {
+        var number0 = 0;
+        var number1 = 1;
+        var number2 = 0;
+        for (var i = 2; i <= fnumber; i++) {
+            number2 = number1 + number0;
+            number0 = number1;
+            number1 = number2;
+            this.addItem(number2);
+        }
+    };
     return fiboCollec;
 }());
-var collection = new fiboCollec();
-var query = 20;
-var number0 = 0;
-var number1 = 1;
-var number2 = 0;
-for (var i = 2; i <= query; i++) {
-    number2 = number1 + number0;
-    number0 = number1;
-    number1 = number2;
-    collection.addItem(number2);
-}
+var collection = new fiboCollec(20);
 var iterator = collection.getIterator();
 console.log("Normal");
 while (iterator.valid()) {
