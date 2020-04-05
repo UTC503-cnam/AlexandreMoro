@@ -86,7 +86,7 @@ class Fibonacci extends IterateurTypique {
     }
 
     /**
-     * Store in the collection array the different steps of the calculus
+     * Store into the collection array the different(s) step(s) of the calculus
      * @param n number to process in order to add to collection array
      */
     private addToCollection(n: number): void {
