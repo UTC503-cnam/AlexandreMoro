@@ -38,7 +38,7 @@ class IterateurTypique implements Iterateur<number>{
             return false;
         } 
 
-        // set variable to the next index
+        // set variable to the next index and retun "yeah man you can continue"
         this.position += 1;
         return true;
     }
@@ -60,7 +60,10 @@ class IterateurTypique implements Iterateur<number>{
  */
 class Fibonacci extends IterateurTypique {
 
-    // process
+    /**
+     * constructor, call the super class and call addToCollection() to push results in the array
+     * @param n number to compute (obviously)
+     */
     constructor(n: number) {
         super();
         this.addToCollection(n);
