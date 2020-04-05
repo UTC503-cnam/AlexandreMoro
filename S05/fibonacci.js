@@ -98,11 +98,10 @@ var Fibonacci = /** @class */ (function (_super) {
 }(IterateurTypique));
 var EmmtteurType = /** @class */ (function () {
     function EmmtteurType() {
-        this.state = 0;
         this.abonnes = [];
     }
     EmmtteurType.prototype.attach = function (abonne) {
-        var ifExist = this.abonnes.includes(abonne);
+        var ifExist = this.abonnes.includes(abonne, 0);
         if (ifExist) {
             return console.log('Abonné déjà présent.');
         }
@@ -136,6 +135,7 @@ var g = new Fibonacci(13);
 while (f.aUnSuivant()) {
     console.log(f.suivant() + ",");
 }
+// test sans abonnement
 while (g.aUnSuivant()) {
     console.log("" + g.suivant());
 }

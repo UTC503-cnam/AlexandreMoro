@@ -116,13 +116,9 @@ interface Emetteur {
 
     notify(): void;
 
-    state: number;
-
 }
 
 class EmmtteurType implements Emetteur {
-
-    public state = 0;
 
     private abonnes: Abonne[] = [];
 
@@ -159,9 +155,7 @@ class AbonneType implements Abonne {
     }
 }
 
-// Affiche les 10 premiers éléments de la suite de Fibonacci :
-// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34,
-// Fin (*)
+
 let f = new Fibonacci(16); // (**)
 f.abonnement();
 
