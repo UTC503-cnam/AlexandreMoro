@@ -1,7 +1,7 @@
 ### Exercices Patron de conception
 ---
 
-Pour la réalisation de cet exercice je m'appuis essentiellement de ce site : https://refactoring.guru/
+Pour la réalisation de cet exercice je me sers essentiellement de ce site : https://refactoring.guru/
 
 
 *Une erreur que je n'arrive pas à régler sur cette portion de code :*
