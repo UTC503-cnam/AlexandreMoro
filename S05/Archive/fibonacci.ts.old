@@ -1,0 +1,212 @@
+interface Iterator<T> {
+
+    current(): T;
+
+    next(): T;
+
+    key(): T;
+
+    valid(): boolean;
+
+    rewind(): void;
+
+}
+
+interface Aggregator {
+
+    getIterator() : Iterator<number>;
+
+}
+
+interface Subject {
+
+    attach(observer: Observer): void;
+
+    detach(observer: Observer): void;
+
+    notify(): void;
+
+    state: number;
+
+}
+
+interface Observer {
+    update(subject: Subject): void;
+}
+
+class fibonacciIterator implements Iterator<number> {
+
+    private collection: fiboCollec;
+
+    private position: number;
+
+    private reverse: boolean = false;
+
+    constructor(collection: fiboCollec, reverse: boolean = false) {
+
+        this.collection = collection;
+        this.reverse = reverse;
+        this.position = 0;
+
+        if (reverse) {
+            this.position = collection.getCount() -1;
+        }
+
+    }
+
+    public rewind() {
+        this.position = this.reverse ? this.collection.getCount() - 1 : 0;
+    }
+
+    public current() : number {
+        return this.collection.getItems()[this.position];
+    }
+
+    public key(): number {
+        return this.position;
+    }
+
+    public next(): number {
+        // si je mets number, j'ai une erreur mais ça compile (???????), any > plus d'erreur et aucune idée pourquoi :/
+        const item = this.collection.getItems()[this.position];
+        this.position += this.reverse ? -1 : 1;
+        return item;
+        
+    }
+    
+    public valid(): boolean {
+        if (this.reverse) {
+            return this.position >= 0;  
+        }
+
+        return this.position < this.collection.getCount();
+    }
+
+}
+
+class fiboCollec implements Aggregator{
+
+    constructor(fNumber: number) {
+        this.fibAlgoToCollec(fNumber);
+    }
+
+    private items: number[] = [];
+
+    public getItems(): number[] {
+        return this.items;
+    }
+
+    public getCount(): number {
+        return this.items.length;
+    }
+
+    public addItem(item: number) : void {
+        this.items.push(item);
+    }
+
+    public getIterator(): Iterator<number> {
+        return new fibonacciIterator(this);
+    }
+
+    public getreverseIterator(): Iterator<number> {
+        return new fibonacciIterator(this, true);
+    }
+
+    private fibAlgoToCollec(fnumber: number): void {
+
+        let number0: number = 0;
+        let number1: number = 1;
+        let number2: number = 0;
+
+        this.addItem(number0);
+        this.addItem(number1); // oui je sais c'est dégueu.
+
+        for (let i: number = 2; i <= fnumber; i++ ) {
+
+            number2 = number1 + number0;
+            number0 = number1;
+            number1 = number2;
+        
+            this.addItem(number2);
+        }
+
+    }
+
+}
+
+
+class ConcreteSubject implements Subject {
+
+    public state: number = 0;
+
+    private observers: Observer[] = [];
+
+    public attach(observer: Observer): void {
+
+        const ifExist = this.observers.includes(observer);
+
+        if (ifExist) {
+            return console.log("L'observateur est déjà rattaché");
+        }
+
+        console.log("Observateur attaché");
+        this.observers.push(observer);
+    }
+
+    public detach(observer: Observer): void {
+        const observerIndex = this.observers.indexOf(observer);
+
+        if (observerIndex === -1) {
+            return console.log("Observateur non existant");
+        }
+
+        this.observers.splice(observerIndex, 1);
+        console.log("Observateur détaché");
+
+    }
+
+    public notify(): void {
+        console.log(" Notification observateur ");
+        
+    }
+
+    public job(): void {
+
+        console.log("toto");
+
+    }
+}
+
+class ConcreteObserver implements Observer {
+
+    public update(subject: Subject): void {
+        if (subject.state != 0) {
+            console.log("Reaction a un évènement");
+        }
+    }
+
+}
+
+
+
+const collection = new fiboCollec(20);
+
+const subject = new ConcreteObserver;
+
+const iterator = collection.getIterator();
+
+console.log("Normal");
+
+while (iterator.valid()) {
+    console.log(iterator.next());
+}
+
+console.log("-----");
+console.log("Reverse");
+
+const reverseIterator = collection.getreverseIterator();
+
+while (reverseIterator.valid()) {
+    console.log(reverseIterator.next());
+}
+

@@ -1,10 +1,10 @@
 var fibonacciIterator = /** @class */ (function () {
     function fibonacciIterator(collection, reverse) {
         if (reverse === void 0) { reverse = false; }
-        this.position = 0;
         this.reverse = false;
         this.collection = collection;
         this.reverse = reverse;
+        this.position = 0;
         if (reverse) {
             this.position = collection.getCount() - 1;
         }
@@ -55,6 +55,8 @@ var fiboCollec = /** @class */ (function () {
         var number0 = 0;
         var number1 = 1;
         var number2 = 0;
+        this.addItem(number0);
+        this.addItem(number1); // oui je sais c'est dégueu.
         for (var i = 2; i <= fnumber; i++) {
             number2 = number1 + number0;
             number0 = number1;
@@ -64,8 +66,47 @@ var fiboCollec = /** @class */ (function () {
     };
     return fiboCollec;
 }());
+var ConcreteSubject = /** @class */ (function () {
+    function ConcreteSubject() {
+        this.state = 0;
+        this.observers = [];
+    }
+    ConcreteSubject.prototype.attach = function (observer) {
+        var ifExist = this.observers.includes(observer);
+        if (ifExist) {
+            return console.log("L'observateur est déjà rattaché");
+        }
+        console.log("Observateur attaché");
+        this.observers.push(observer);
+    };
+    ConcreteSubject.prototype.detach = function (observer) {
+        var observerIndex = this.observers.indexOf(observer);
+        if (observerIndex === -1) {
+            return console.log("Observateur non existant");
+        }
+        this.observers.splice(observerIndex, 1);
+        console.log("Observateur détaché");
+    };
+    ConcreteSubject.prototype.notify = function () {
+        console.log(" Notification observateur ");
+    };
+    ConcreteSubject.prototype.job = function () {
+        console.log("toto");
+    };
+    return ConcreteSubject;
+}());
+var ConcreteObserver = /** @class */ (function () {
+    function ConcreteObserver() {
+    }
+    ConcreteObserver.prototype.update = function (subject) {
+        if (subject.state != 0) {
+            console.log("Reaction a un évènement");
+        }
+    };
+    return ConcreteObserver;
+}());
 var collection = new fiboCollec(20);
-//const subject = new ConcreteSubject();
+var subject = new ConcreteObserver;
 var iterator = collection.getIterator();
 console.log("Normal");
 while (iterator.valid()) {
