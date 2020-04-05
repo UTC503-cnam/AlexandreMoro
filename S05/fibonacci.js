@@ -65,6 +65,7 @@ var fiboCollec = /** @class */ (function () {
     return fiboCollec;
 }());
 var collection = new fiboCollec(20);
+//const subject = new ConcreteSubject();
 var iterator = collection.getIterator();
 console.log("Normal");
 while (iterator.valid()) {

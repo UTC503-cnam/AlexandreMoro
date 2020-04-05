@@ -6,6 +6,8 @@ interface Subject {
 
     notify(): void;
 
+    state: number;
+
 }
 
 interface Observer {
@@ -57,7 +59,7 @@ class ConcreteSubject implements Subject {
 class ConcreteObserver implements Observer {
 
     public update(subject: Subject): void {
-        if (subject.state < 3) {
+        if (subject.state != 0) {
             console.log("Reaction a un évènement");
         }
     }

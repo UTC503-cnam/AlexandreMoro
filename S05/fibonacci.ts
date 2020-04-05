@@ -50,7 +50,7 @@ class fibonacciIterator implements Iterator<number> {
         return this.position;
     }
 
-    public next(): number {
+    public next() : any {   // si je mets number, j'ai une erreur mais ça compile (???????), any > plus d'erreur et aucune idée pourquoi :/
         const item = this.collection.getItems()[this.position];
         this.position += this.reverse ? -1 : 1;
         return item;
@@ -67,8 +67,6 @@ class fibonacciIterator implements Iterator<number> {
 }
 
 class fiboCollec implements Aggregator{
-
- 
 
     constructor(fNumber: number) {
         this.fibAlgoToCollec(fNumber);
@@ -118,7 +116,7 @@ class fiboCollec implements Aggregator{
 
 const collection = new fiboCollec(20);
 
-const subject = new ConcreteSubject();
+//const subject = new ConcreteSubject();
 
 const iterator = collection.getIterator();
 
