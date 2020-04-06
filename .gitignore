@@ -5,3 +5,4 @@ typescript-starter
 S05/tsconfig.json
 .gitignore
 
+S05/fibonacci.js
