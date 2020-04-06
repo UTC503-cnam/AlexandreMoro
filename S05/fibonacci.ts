@@ -68,11 +68,22 @@ class IterateurTypique implements Iterateur<number>{
  */
 class Fibonacci extends IterateurTypique {
 
+    private static instance: Fibonacci;
+
+    public static getInstance(n: number): Fibonacci {
+        if (!Fibonacci.instance) {
+            Fibonacci.instance = new Fibonacci(n);
+            console.log(`Création de l'instance`)
+        }
+
+        return Fibonacci.instance;
+    }
+
     /**
      * constructor, call the super class and call addToCollection() to push results in the array
      * @param n number to compute (obviously)
      */
-    constructor(n: number) {
+    private constructor(n: number) {
         super();
         this.addToCollection(n);
 
@@ -156,20 +167,18 @@ class AbonneType implements Abonne {
 }
 
 
-let f = new Fibonacci(16); // (**)
+let f = Fibonacci.getInstance(16); // (**)
 f.abonnement();
 
-let g = new Fibonacci(13);
+let g = Fibonacci.getInstance(13);
+g.abonnement();
+
+if (f === g) {
+    console.log('Les instances sont identiques');
+} else {
+    console.log(`Les instances sont différentes`)
+}
 
 while (f.aUnSuivant()) {
     console.log(`${f.suivant()},`);
 }
-
-// test sans abonnement
-
-while (g.aUnSuivant()) {
-    console.log(`${g.suivant()}`);
-}
-
-// (*)  Ex2 : l'observeur affiche 'Fin' à la fin de la série
-// (**) Ex3 : remplacer ce code par une initialisation par Singleton
