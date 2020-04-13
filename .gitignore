@@ -10,4 +10,5 @@ Webconf/jeSuisUnTableau.js
 .vscode/launch.json
 S06/tsconfig.json
 
-S05/*.js
+
+S06/*.js
