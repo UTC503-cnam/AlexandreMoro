@@ -12,3 +12,13 @@ S06/tsconfig.json
 
 
 S06/*.js
+S07/closure-1.ts
+S07/closure-2.ts
+S07/factorial.ts
+S07/filter-1.ts
+S07/filter-2.ts
+S07/filter-3.ts
+S07/map.ts
+S07/reduce-1.ts
+S07/reduce-2.ts
+S07/tsconfig.json
