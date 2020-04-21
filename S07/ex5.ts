@@ -8,4 +8,7 @@ let maxiEx5 = numbersEx5.reduce((acc, curr) => {
   return curr > acc ? (acc = curr) : acc;
 });
 
+// Suite lecture du corrigé :  l'accumulateur reprenant la valeur de la dernière opération, il n'est pas
+// nécessaire de réaffecter acc = curr (double affectation)
+
 console.log(`Min is ${miniEx5}, max is ${maxiEx5}`);
