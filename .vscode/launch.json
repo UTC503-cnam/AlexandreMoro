@@ -32,6 +32,13 @@
 
       "preLaunchTask": "gcc build active file",
       "miDebuggerPath": "/usr/bin/gdb"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Ts",
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "args": ["${file}"]
     }
   ]
 }
