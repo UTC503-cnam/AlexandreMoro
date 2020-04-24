@@ -1,3 +1,0 @@
-### Analyse des sites (en cours) à cette adresse :
-
-https://www.notion.so/alexandremoro/Exercices-52daeedca39a4ffbb41a1f71a994e8b8
