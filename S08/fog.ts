@@ -26,7 +26,7 @@ let fog = (f: any) => (g: any) => (x: number) => {
  * En reprenant les fonctions de base de l'exercice, nous les associons avec unit pour les rendre compatible
  * avec le format des fonctions débugables (number, string)
  * square aura le paramètre unit (la valeur de débuggage sera ``)
- * doubme aura un string de débugger
+ * double aura un string de débugger
  * (ceci uniquement pour marquer la différence)
  * @param x Number à calculer
  * @returns [x, ``] dans les 2 cas, un via unit() et l'autre volontaire;
