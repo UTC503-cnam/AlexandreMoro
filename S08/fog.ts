@@ -1,7 +1,38 @@
-// Ecrivez en lambda la fonction de composition f o g
-let fog = (f) => (g) => (x) => f(g(x));
+// Bind permet de transformer une fonction (Number) -> (Number, String) en (Number, String) -> (Number, String)
+let bind = (f: any) =>
+  function (tuple) {
+    // plutôt que de prendre un x: number par ex, on passe un tuple [x: number ; s: string]
+    const [x, s] = tuple;
+    const [y, t] = f(x);
+    return [y, s + t];
+  };
 
-let square = (x) => x * x;
-let double = (x) => x * 2;
+let unit = (x: number) => [x, ``]; // unit va wrapper la valeur passé en paramètre dans un container
 
-console.log("f o g (10) = " + fog(square)(double)(10));
+let fog = (f: any) => (g: any) => (x: (string | number)[]) => f(g(x));
+
+/**  mise en commentaire pour reprise de la fonction dans sa forme originelle ci-dessus
+let fog = (f: any) => (g: any) => (x: number) => {
+  const [y, s] = g(x); // on traite double() en premier, le résultat est stocké dans y, le debug dans s
+  const [z, t] = f(y); // square() traite y et stocke le resultat dans z, le resultat du debug de square est stocké dans t
+  return [z, s + t]; // on retourne le résultat et les log concaténés
+};
+*/
+
+/**
+ * En reprenant les fonctions de base de l'exercice, nous les associons avec unit pour les rendre compatible
+ * avec le format des fonctions débugables (number, string)
+ * square aura le paramètre unit (la valeur de débuggage sera ``)
+ * doubme aura un string de débugger
+ * @param x Number à calculer
+ * @returns [x, ``];
+ */
+let square = (x: number) => unit(x * x);
+let double = (x: number) => [x * 2, ` Appel de double `];
+
+//let square = (x) => [x * x, ` Appel de square `];
+//let double = (x) => [x * 2, ` Appel de double `];
+
+let test = fog(bind(square))(bind(double)); // passer le bind sur les fonctions passée en paramètre va nous permettre de reprendre la forme originelle de la fonction
+let v = test(unit(10));
+console.log(v);
