@@ -6,6 +6,7 @@ let bind = (f: any) =>
     const [y, t] = f(x);
     return [y, s + t];
   };
+
 /**
  * unit va wrapper la valeur passé en paramètre dans un container
  * @param x numvber passé en paramètre
