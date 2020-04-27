@@ -6,9 +6,12 @@ let bind = (f: any) =>
     const [y, t] = f(x);
     return [y, s + t];
   };
-
-let unit = (x: number) => [x, ``]; // unit va wrapper la valeur passé en paramètre dans un container
-
+/**
+ * unit va wrapper la valeur passé en paramètre dans un container
+ * @param x numvber passé en paramètre
+ * @returns [x, ``]; le number wrappé dans un container [number, string]
+ */
+let unit = (x: number) => [x, ``];
 let fog = (f: any) => (g: any) => (x: (string | number)[]) => f(g(x));
 
 /**  mise en commentaire pour reprise de la fonction dans sa forme originelle ci-dessus
@@ -24,8 +27,9 @@ let fog = (f: any) => (g: any) => (x: number) => {
  * avec le format des fonctions débugables (number, string)
  * square aura le paramètre unit (la valeur de débuggage sera ``)
  * doubme aura un string de débugger
+ * (ceci uniquement pour marquer la différence)
  * @param x Number à calculer
- * @returns [x, ``];
+ * @returns [x, ``] dans les 2 cas, un via unit() et l'autre volontaire;
  */
 let square = (x: number) => unit(x * x);
 let double = (x: number) => [x * 2, ` Appel de double `];
