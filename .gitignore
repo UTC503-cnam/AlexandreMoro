@@ -318,3 +318,5 @@ node_modules/yn/lenient.js
 node_modules/yn/license
 node_modules/yn/package.json
 node_modules/yn/readme.md
+
+S08/*.js
