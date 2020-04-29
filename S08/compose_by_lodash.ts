@@ -10,7 +10,12 @@ let halfed = (x) => x / 2;
 let squared_root = (x) => Math.sqrt(x);
 
 // Utilisez une fonction de lodash pour composer
-console.log(
-  "sqrt((10*10) * 2 / 2) = " +
-    fp.compose(squared_root, halfed, doubled, squared, 10)
-);
+
+const compute = fp.compose(squared_root, doubled, halfed, squared);
+
+console.log(`sqrt((10*10) * 2 / 2) = " ${compute(10)} ... Obviously`);
+
+// console.log(
+//   "sqrt((10*10) * 2 / 2) = " +
+//     fp.compose(squared_root, halfed, doubled, squared, 10)
+// );
