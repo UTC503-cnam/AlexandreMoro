@@ -11,11 +11,11 @@ function verify(result) {
   console.log(`Verify that ${result} = 10`);
 }
 
-calculate(1) // Calculate with 1 = 2 (resolve(value * 2);)
+calculate(1) // Calculate with 1 = 2 (resolve(value * 2);) --> Promesse tenue !! on passe à la suite: console.log("End");
   .then(calculate) // Calculate with 2 (1*2) = 4
   .then((result) => result + 1) // 1) résultat retourné +1 = 5
   .then(calculate) // 2) Calculate with 5 = 10
-  .then(verify); //Appelle la fonction verify
+  .then(verify); //Appelle la fonction verify -- Remarquons que console.log("End") n'est pas appelé, on termine juste la chaine
 
 console.log("End");
 
