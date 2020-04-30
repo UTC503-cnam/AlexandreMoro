@@ -24,14 +24,17 @@ function averagePrice(cars: Car[]): number {
   return cars.map((a) => a.price).reduce((a, b) => a + b) / cars.length;
 }
 
-function averagePriceByBrand(cars: Car[], brand: string): number {
-  return (
-    cars
-      .filter((a) => a.brand === brand)
-      .map((a) => a.price)
-      .reduce((a, b) => a + b) / cars.filter((a) => a.brand === brand).length
-  );
-}
+// function averagePriceByBrand(cars: Car[], brand: string): number {
+//   return (
+//     cars
+//       .filter((a) => a.brand === brand)
+//       .map((a) => a.price)
+//       .reduce((a, b) => a + b) / cars.filter((a) => a.brand === brand).length
+//   );
+// }
+
+let averagePriceByBrand = (cars) => (brand) =>
+  averagePrice(cars.filter((car) => car.brand === brand));
 
 let cars: Car[] = [
   new Car("Renault", "Twizy", 7540),
