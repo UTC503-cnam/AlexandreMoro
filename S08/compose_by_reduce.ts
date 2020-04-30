@@ -1,22 +1,10 @@
-<<<<<<< HEAD
-//let square = x => x * x;
-//let double = x => x * 2;
+let squa = (x) => x * x;
+let doub = (x) => x * 2;
 let half = (x) => x / 2;
 let square_root = (x) => Math.sqrt(x);
 
-// Ecrivez la fonction lambda compose à l'aide de la fonction reduceRight
-let compose = console.log(
-  "sqrt((10*10) * 2 / 2) = " + compose(square_root, half, double, square)(10)
+let compose = (...fns) => (x) => fns.reduceRight((v, f) => f(v), x); //Si le dernier paramètre nommé fourni à la fonction est préfixé de ... (trois points), il devient un tableau dont les éléments entre 0 (inclus) et lesArguments.length (exclus) sont fournis comme autres arguments à la fonction.
+
+console.log(
+  "sqrt((10*10) * 2 / 2) = " + compose(square_root, half, doub, squa)(10)
 );
-=======
-
-let square = x => x * x;
-let double = x => x * 2;
-let half = x => x / 2;
-let square_root = x => Math.sqrt(x);
-
-// Ecrivez la fonction lambda compose à l'aide de la fonction reduceRight
-let compose = 
-
-console.log('sqrt((10*10) * 2 / 2) = ' + compose(square_root, half, double, square)(10));
->>>>>>> 96bc029c97c8ac133ca2d44eacc6da921db6496b
