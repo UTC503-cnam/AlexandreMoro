@@ -15,13 +15,9 @@ function maxPrice(cars: Car[]): number {
 }
 
 function minPrice(cars: Car[]): number {
-	let minPrice: number = Number.MAX_VALUE;
-	for (let i = 0; i < cars.length; i++) {
-		if (cars[i].price < minPrice) {
-			minPrice = cars[i].price;
-		}
-	}
-	return minPrice;
+	return cars.reduce((a, b) => {
+		return a.price < b.price ? a : b;
+	}).price;
 }
 
 function averagePrice(cars: Car[]): number {
@@ -62,3 +58,14 @@ console.log("Average price: " + averagePrice(cars));
 console.log(
 	"Average price for Porsche: " + averagePriceByBrand(cars, "Porsche")
 );
+
+/**
+ * 
+Max price: 58835
+cars.ts:55
+Min price: 7540
+cars.ts:56
+Average price: 28774.375
+cars.ts:57
+Average price for Porsche: 56937.5
+ */
