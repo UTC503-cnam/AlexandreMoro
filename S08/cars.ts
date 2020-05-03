@@ -52,5 +52,7 @@ let cars: Car[] = [
   new Car("Volkswagen", "Polo", 14430),
 ];
 
-maxPrice(cars).then(displayMaxi);
+let maxi = maxPrice(cars);
+maxi.then(displayMaxi);
+
 minPrice(cars).then(displayMini);
