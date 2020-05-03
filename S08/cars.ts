@@ -22,11 +22,23 @@ let maxPrice = function (x: Car[]) {
 	});
 };
 
-let minPrice: Function = (x: Car[]) =>
-	x.reduce(
-		(currentMin, car) => (car.price < currentMin ? car.price : currentMin),
-		Number.MAX_VALUE
-	);
+let minPrice = function (x: Car[]) {
+	return new Promise((resolve, reject) => {
+		resolve(
+			x.reduce(
+				(currentMin, car) => (car.price < currentMin ? car.price : currentMin),
+				Number.MAX_VALUE
+			)
+		);
+		reject(`une erreur est surevenue`);
+	});
+};
+
+// let minPrice: Function = (x: Car[]) =>
+// 	x.reduce(
+// 		(currentMin, car) => (car.price < currentMin ? car.price : currentMin),
+// 		Number.MAX_VALUE
+// 	);
 
 let averagePrice: Function = (x: Car[]) =>
 	x.reduce((a, b) => a + b.price, 0) / x.length;
@@ -43,3 +55,4 @@ let cars: Car[] = [
 ];
 
 maxPrice(cars).then(display);
+minPrice(cars).then(display);
