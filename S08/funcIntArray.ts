@@ -16,8 +16,12 @@
 function gMap<T, R>(x: T[], fun: Function): R[] {
 	let output: R[] = [];
 	x.forEach((element) => {
-		output.push(fun.apply(element));
+		output.push(fun(element));
 	});
 
 	return output;
 }
+
+let words: string[] = ["Boeing", "Dassault", "Breguet"];
+let wordsLength: number[] = gMap(words, (x: string) => x.length);
+debugger;
