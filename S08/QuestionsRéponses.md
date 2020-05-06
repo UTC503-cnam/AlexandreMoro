@@ -3,7 +3,7 @@
 
 * Citez plusieurs noms de Monades connues et indiquez leur fonction. 
    
-  >*Pour cet exercice je me baserais sur la ré-écriture de l'exerice fog.ts*
+  >*Pour cet exercice je me baserais en partie sur la ré-écriture de l'exerice fog.ts*
   https://github.com/UTC503-cnam/AlexandreMoro/blob/master/S08/fog.ts
 
  
@@ -14,7 +14,7 @@
     const identity = <T>(t: T) => t;
     ```
 
-  * **unit** : unit va wrapper la valeur passé en paramètre dans un container. Un des exemples des liens fournis dans le cours se basait sur le fait de pouvoir logger les appels de fonctions sans utiliser `console.log` dans le cadre de l'utilisation de fonctions pures.
+  * **unit** : unit va wrapper la valeur passé en paramètre dans un container que nos fonctions vont pouvoir utiliser. Un des exemples des liens fournis dans le cours se basait sur le fait de pouvoir logger les appels de fonctions sans utiliser `console.log` par ex.
   
     ```typescript
     /**
@@ -51,4 +51,4 @@
     };
     ```
   
-  * **maybe** : 
+  * **maybe** : Maybe est similaireau monade identité mais en plus de pouvoir contenir une valeur il peut aussi représenter son absence (`null` ,`undefined` ou une chaîne string vide).  
