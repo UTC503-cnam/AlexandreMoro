@@ -1,6 +1,6 @@
 // Bind permet de transformer une fonction (Number) -> (Number, String) en (Number, String) -> (Number, String)
 let bind = (f: any) =>
-  function (tuple) {
+  function (tuple: any) {
     // plutôt que de prendre un x: number par ex, on passe un tuple [x: number ; s: string]
     const [x, s] = tuple;
     const [y, t] = f(x);
@@ -9,7 +9,7 @@ let bind = (f: any) =>
 
 /**
  * unit va wrapper la valeur passé en paramètre dans un container
- * @param x numvber passé en paramètre
+ * @param x number passé en paramètre
  * @returns [x, ``]; le number wrappé dans un container [number, string]
  */
 let unit = (x: number) => [x, ``];
@@ -32,12 +32,12 @@ let fog = (f: any) => (g: any) => (x: number) => {
  * @param x Number à calculer
  * @returns [x, ``] dans les 2 cas, un via unit() et l'autre volontaire;
  */
-let square = (x: number) => unit(x * x);
-let double = (x: number) => [x * 2, ` Appel de double `];
+let squareFog = (x: number) => unit(x * x);
+let doubleFog = (x: number) => [x * 2, ` Appel de double `];
 
 //let square = (x) => [x * x, ` Appel de square `];
 //let double = (x) => [x * 2, ` Appel de double `];
 
-let test = fog(bind(square))(bind(double)); // passer le bind sur les fonctions passée en paramètre va nous permettre de reprendre la forme originelle de la fonction
+let test = fog(bind(squareFog))(bind(doubleFog)); // passer le bind sur les fonctions passée en paramètre va nous permettre de reprendre la forme originelle de la fonction
 let v = test(unit(10));
 console.log(v);
