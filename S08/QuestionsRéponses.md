@@ -95,6 +95,16 @@
 
 ---
 
-### \*Quel lien faites-vous entre bind et flatMap ?
+### *Quel lien faites-vous entre bind et flatMap ?*
+Reprenons **bind** :  
+![bind](https://fsharpforfunandprofit.com/assets/img/vgfp_bind_composition.png)  
+Ici nous avons 3 fonctions indépendante de signature A->E\<B>, B->\<C> et C->E\<D>
+Bind nous permet ici de rendre le chainage possible, mais en sortie de chaine on se retrouve avec un enchainement de container !  
+Flatmap va nous permettre de reduire les couches d'emballage (wrap) de nos données :D
+![container](https://www.cocoawithlove.com/assets/blog/function_to_monad6.svg)
 
-- flatMap :
+### *Quelle différence fondamentale faites-vous entre Promise et Observable ?*
+
+A la différence des Promises qui sont des actions asynchrones ne retournant qu'une seule valeur, les Observables sont des streams qui vont émettre plusieurs valeurs jusqu'à leur clôture.
+
+![container](https://miro.medium.com/max/1400/1*ThbKddqq1qC4a1pDDjHNoQ.jpeg)
