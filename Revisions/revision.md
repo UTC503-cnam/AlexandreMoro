@@ -128,20 +128,69 @@
 
    Webconf du 28/02/2020  
 
-   Soit le code suivant:
+  * Soit le code suivant:
 
-   ```javascript
-   var v=5;
+      ```javascript
+      var v=5;
 
-   functionf(v, x){
-      v=v+1;
-      return v+x;
-   }
+      functionf(v, x){
+         v=v+1;
+         return v+x;
+      }
 
-   varz= f(10, 2);
-   ```
+      varz= f(10, 2);
+      ```
 
-   Que valent v et z ?
-  
-   **V = 5**  
-   **Z = 13**  
+      Que valent v et z ?
+
+      **V = 5**  
+      **Z = 13**  
+
+  * Soit le code suivant en Javascript:
+
+      ```javascript
+      function f(v){
+      if (v == 0) {
+         return 0;
+      }
+      return v + f(v - 1);
+      }
+      var r = f(4);
+      ```
+
+      Que vaut r ?
+
+      **r = 10**  
+
+  * Soit le code suivant en Javascript :  
+
+      ```javascript
+      function f(){
+         return4;
+         }
+
+      var x = f;
+      var y = f();
+      var z = x() + y;
+      ```
+
+      **x est une fonction avec la même définition que f**  
+      **y = 4**  
+      **z = 8**  
+
+  * Lors d’un appel de fonction, les paramètres sont copiés sur quelle mémoire ?
+   
+      **(1) La pile (stack)**  
+      (2) Le tas (heap)
+
+  * Lors d’une allocation dynamique de mémoire, quel type de mémoire est utilisée ?  
+
+      (1) La pile (stack)  
+      **(2) Le tas (heap)**
+
+  * Quel concept POO est utilisé en combinant des méthodes et des attributs dans une classe ?  
+
+      (1)Polymorphisme  
+      **(2)Encapsulation**  
+      (3)Abstraction  
+      (4)Héritage  
