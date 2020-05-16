@@ -378,7 +378,7 @@
     }
     ```
 
-    > Un chien et un chat hérite de Animals, mais pas une voiture. Cependant, une voiture, un chat et un chien peuvent tous `bouger()`dans ce cas la on choisira une interface.
+    > Un chien et un chat hérite de Animals, mais pas une voiture. Cependant, une voiture, un chat et un chien peuvent tous `bouger()`dans ce cas la on choisira une interface. On va pouvoir lier via l'interface des comportements similaires.
 
   * Une classe peut être héritée par combien de classes filles ?
 
@@ -386,8 +386,14 @@
     (2) Ça dépend des langages  
     **(3) Une infinité**  
 
+    >Un aliment peut être hérité d'une infinité de classe fille
+
   * De combien de classes une classe fille peut-elle hériter ?  
 
     (1) Qu’une seule  
     **(2) Ça dépend des langages**  
+
+    >Certains langages autorisent l'héritage multiple (Python par ex), java ne l'autorise pas.
+
+* ### 01 - Découverte de Git et Github / Aperçu de Typescript
 
