@@ -122,11 +122,11 @@
    • Utilisé notamment dans le traitement automatique du langage naturel avant le retour des réseaux de neurones artificiels (« deep learning »).  
    Exemples : Prolog.
 
-## 3. Revue des chapitres  
+## 3. Revues webconf  
 
 * ### 00 - Pour bien démarrer
 
-   Webconf du 28/02/2020  
+  *Webconf du 28/02/2020*  
 
   * Soit le code suivant:
 
@@ -233,7 +233,7 @@
     **(1) Une méthode n'agissant que sur un seul objet (instance de la classe) à la fois**  
     (2) Une méthode indépendante de toute instance de la classe.  
 
-    >On créé une et c'est uniquement sur cette instance que l'on va agir.
+    >On créé une instance et c'est uniquement sur cette instance que l'on va agir.
 
   * Quelle est la différence entre une classe et un objet ?  
 
@@ -307,6 +307,26 @@
     (3) C’est une classe ne pouvant pas avoir de constructeur.  
     (4) C’est une classe du langage Java permettant de créer plusieurs objets en son sein.  
 
+    ```typescript
+    abstract class Food{
+       abstract showCalories() : void
+    }
+
+    class Tomatoes extends Food {
+       showCalories(): void {
+          console.log(16)
+       }
+    }
+
+    class Lemon extends Food {
+         showCalories(): void {
+            console.log(28)
+         }
+    }
+    ```
+
+    >Dès lors que l'on met `extends` il nous faudra obligatoirement une méthode showCalories()
+
   * Dans quel cas décide-t-on de déclarer une classe abstraite ?  
 
     (1) Lorsque l’on souhaite empêcher toute classe d’hériter de la dite class  
@@ -319,6 +339,46 @@
     (2) Une classe présente dans un package du langage Java servant de base à tous les objets du langage.  
     (3) Une classe abstraite  
     **(4) Une classe 100% abstraite permettant de créer un nouveau super type et jouir du polymorphisme.**  
+
+    > Interface != classe abstraite
+
+    ```java
+    public interface Ingestable {
+       public void whatHappens();
+    }
+
+    abstract class Food {
+       abstract void showCalories;
+    }
+
+    public class Tomatoes extends Food implements Ingestable {
+       void showCalories() {
+          System.out.println(16);
+       }
+
+       void whatHappens() {
+          System.out.println("Hum j'adore quand c'est umami");
+       }
+    }
+
+    public class Lemon extends Food implements Ingestable {
+       void showCalories() {
+          System.out.println(28);
+       }
+
+       void whatHappens() {
+          System.out.println("Frissons dans le dos");
+       }
+    }
+
+    public class poison implements Ingestable {
+       void whatHappens() {
+          System.out.println("Ouuuups...");
+       }
+    }
+    ```
+
+    > Un chien et un chat hérite de Animals, mais pas une voiture. Cependant, une voiture, un chat et un chien peuvent tous `bouger()`dans ce cas la on choisira une interface.
 
   * Une classe peut être héritée par combien de classes filles ?
 
