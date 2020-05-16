@@ -421,7 +421,7 @@
 
     **Notion d'assignation.**
 
-    On peut assigner à notre boîte avec unidentifiant id plusieurs formes d'expressions. 
+    On peut assigner à notre boîte id plusieurs formes d'expressions. 
 
     ```javascript
     var id = "exp";
