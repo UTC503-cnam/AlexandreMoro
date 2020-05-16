@@ -122,7 +122,7 @@
    • Utilisé notamment dans le traitement automatique du langage naturel avant le retour des réseaux de neurones artificiels (« deep learning »).  
    Exemples : Prolog.
 
-## 3. Revues webconf  
+## 3. Revues webconf, Cours, exercices
 
 * ### 00 - Pour bien démarrer
 
@@ -397,3 +397,12 @@
 
 * ### 01 - Découverte de Git et Github / Aperçu de Typescript
 
+  *Webconf du 13/03/2020*  
+  
+  *@todo : Voir si il est pertinent d'approfondir cette webconf*
+
+* ### 02 - Paradigme de programmation impérative
+
+  *Webconf du 03/04/2020*  
+
+  
