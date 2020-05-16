@@ -166,7 +166,7 @@
 
       ```javascript
       function f(){
-         return4;
+         return 4;
          }
 
       var x = f;
@@ -188,9 +188,146 @@
       (1) La pile (stack)  
       **(2) Le tas (heap)**
 
+      >Lien en rapport avec ces 2 questions: https://techdifferences.com/difference-between-stack-and-heap.html  
+      >Lien complémentaire : https://www.journaldunet.fr/web-tech/developpement/1202909-que-sont-la-pile-stack-et-le-tas-heap/  
+
   * Quel concept POO est utilisé en combinant des méthodes et des attributs dans une classe ?  
 
-      (1)Polymorphisme  
-      **(2)Encapsulation**  
-      (3)Abstraction  
-      (4)Héritage  
+      (1) Polymorphisme  
+      **(2) Encapsulation**  
+      (3) Abstraction  
+      (4) Héritage
+   
+    **On encapsule des attributs et des méthodes dans une classe**  
+
+  * Quand on parle de membre de classe, on parle de :  
+
+    (1) Uniquement de méthode  
+    (2) Uniquement d’attribut (propriété)  
+    **(3) Méthode ou attribut**  
+
+  * Quelle garantie nous apporte le principe d’encapsulation ?  
+
+    (1) Il nous garantit uniquement la validité des types des données de nos objets  
+    **(2) Il nous garantit la validité des types et des valeurs des données de nos objets**  
+    (3) Il nous garantit que l'utilisateur pourra manipuler des objets  
+
+    >**Un objet doit respecter l'interface qu'il promet d'implanter**  
+
+  * Si l’on respecte le principe d’encapsulation, comment procédons-nous pour accéder etmodifier la valeur des attributs de nos objets ?  
+
+    **(1) Nous nous servons d’accesseurs et de mutateurs**  
+    (2) Nous créons une classe à part chargée de récupérer et modifier ces valeurs  
+    (3) Nous accédons par référence à ces attributs afin de récupérer leurs valeurs et de les modifier depuis l’extérieur de la classe
+
+    >Voir Getter / Setter
+
+  * Quelle est l’utilité d’un constructeur ?  
+
+    (1) Déclarer l’ensemble des caractéristiques et fonctionnalités de l’objet afin de nous en servir  
+    (2) Allouer la mémoire nécessaire pour que l’objet créé puisse exister  
+    **(3) Effectuer des opérations d’initialisation dès la création de l’objet**
+
+  * Quand on parle de méthode d’instance, on parle de:
+
+    **(1) Une méthode n'agissant que sur un seul objet (instance de la classe) à la fois**  
+    (2) Une méthode indépendante de toute instance de la classe.  
+
+    >On créé une et c'est uniquement sur cette instance que l'on va agir.
+
+  * Quelle est la différence entre une classe et un objet ?  
+
+    **(1) Une classe est une description comportant un ensemble de caractéristiques et de fonctionnalités dont chaque objet créé à partir de ce modèle héritera.**  
+    (2) Un objet est une description comportant un ensemble de caractéristiques et de fonctionnalités dont chaque classe créée à partir de ce modèle héritera.  
+
+    >Penser à la gauffre et au moule à gauffre. La gauffre est l'instance (objet)
+
+  * Quelle est la différence entre un objet et une instance de classe ?  
+  
+    **Aucune, ce sont des synonymes**  
+
+  * En Java, C#, C++, PHP, ECMAScript 6, quel mot-clé permet de créer une nouvelle instance ?  
+
+    (1)instanceof  
+    **(2)new**  
+    (3)create  
+
+  * En Java, C#, C++, PHP, quels mots-clés sont utilisés pour spécifier la visibilité des propriétés et des méthodes ?  
+
+    (1)final  
+    **(2)private**  
+    (3)abstract  
+    **(4)protected**  
+    **(5)public**  
+
+    > Private : interne à la classe uniquement.  Protected : Accessible uniquement à la classe et ses dérivés (héritage)
+
+  * Quelle visiblité est la moins permissive ?  
+
+    **(1)private**  
+    (2)protected  
+    (3)public  
+
+    > On accède uniquement à la méthode ou attribut à l'intérieur de la classe uniquement
+
+  * Quel est le principe de l’héritage ?  
+
+    (1) Créer une classe possédant une partie des caractéristiques et fonctionnalités d’une autre classe  
+    (2) Créer une classe capable de partager ses fonctionnalités avec une autre classe, et inversement  
+    **(3) Créer une classe possédant au moins toutes les caractéristiques et fonctionnalités d’une autreclasse**  
+
+  * Quelle condition nécessaire et suffisante doit-on avoir pour dire qu’une classe B doithériter d’une classe A ?  
+
+    **(1) On doit pouvoir dire : « B est un A »**  
+    (2) On doit retrouver des fonctionnalités en commun entre la classe B et la classe A  
+    (3) On doit retrouver des caractéristiques en commun entre la classe B et la classe A  
+
+  * En Java, PHP, ECMAScript 6, quel mot-clé permet de procéder à un héritage ?
+
+    (1) herits  
+    **(2) extends**  
+    (3) childof  
+
+  * En quoi consiste la redéfinition d’une méthode ?
+
+    **(1) Réécrire une méthode déjà implémentée dans la classe mère**  
+    (2) Déclarer deux fois la même méthode au sein d’une même classe  
+    (3) Empêcher l’héritage d’une méthode au sein d’une classe fille  
+
+    > Override, on pourrait avoir une classe enfant qui hérite d'une classe mère,sert souvent de valeur par défaut et on va override pour les cas particuliers, dans une application par ex on a plein d'animaux qui ont un comportement par défaut mais pour certains qui ne réagissent pas pareil on va redéfinir.
+
+  * Quelle est la différence entre redéfinition de méthode et surcharge d’une méthode ?  
+
+    **Aucune, ce sont des synonymes**  
+
+  * Qu’est-ce qu’une classe abstraite ?  
+
+    **(1) C’est une classe déclarée avec le mot-clé abstract, ne pouvant pas être instanciée et pouvant contenir des méthodes abstraites, donc sans corps de méthode.**  
+    (2) C’est une classe ne pouvant pas être héritée.  
+    (3) C’est une classe ne pouvant pas avoir de constructeur.  
+    (4) C’est une classe du langage Java permettant de créer plusieurs objets en son sein.  
+
+  * Dans quel cas décide-t-on de déclarer une classe abstraite ?  
+
+    (1) Lorsque l’on souhaite empêcher toute classe d’hériter de la dite class  
+    **(2) Lorsque l’on souhaite représenter une nature en commun pour plusieurs classes**  
+    (3) Lorsque l’on souhaite imposer aux classes enfant de réécrire chacune des méthodes de la classe mère
+
+  * Dans le langage Java, qu’est-ce qu’une interface ?  
+
+    (1) Une fenêtre permettant à l’utilisateur d’interagir avec le programme.  
+    (2) Une classe présente dans un package du langage Java servant de base à tous les objets du langage.  
+    (3) Une classe abstraite  
+    **(4) Une classe 100% abstraite permettant de créer un nouveau super type et jouir du polymorphisme.**  
+
+  * Une classe peut être héritée par combien de classes filles ?
+
+    (1) Qu’une seule  
+    (2) Ça dépend des langages  
+    **(3) Une infinité**  
+
+  * De combien de classes une classe fille peut-elle hériter ?  
+
+    (1) Qu’une seule  
+    **(2) Ça dépend des langages**  
+
