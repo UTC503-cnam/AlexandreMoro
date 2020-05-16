@@ -2,8 +2,6 @@
 
 ## 1. Définitions générales:
 
----
-
    **Le tas:**  
    utilisé lors de l'allocation dynamique de la mémoire durant l'exécution d'un programme informatique. Ou à la demande du programme.
 
@@ -89,8 +87,6 @@
    du mot *παράδειγμα* (paradeïgma) en grec ancien qui signifie « modèle » ou « exemple » une représentation du monde, une manière de voir les choses, un modèle cohérent du monde qui repose sur un fondement défini (modèle théorique) il fournit des problèmes types et des solutions.
 
 ## 2. Paradigmes
-
----
 
    **Programmation impérative:**
    Décrit les opérations en séquence d’instructions pour modifier l’état du programme • Introduit les concepts de procédures, structures de contrôle, et structures de données.  
