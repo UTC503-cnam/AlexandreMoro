@@ -438,7 +438,7 @@
 
     On peut assigner toute sorte de chose à notre identifiant.
 
-    ! Attention de pas confondre :
+    **! Attention de pas confondre :**
     ```javascript
     var id = "exp"
     ```
@@ -454,5 +454,44 @@
 
     >Ici on teste l'égalité du contenu id avec la valeur "exp"
 
-timecode : 11:21
+    **Instruction conditionnelle**
+
+    ```javascript
+    var (jaiFaim) {
+       return "miam, je mange";
+    } else {
+       return "je mange quand même";
+    }
+    ```
+    Exemple en JS, notre if va essayer de savoir si la condition est respectée et va retourner une valeur selon.
+
+    Exercice if / else:
+
+    ```javascript
+         function fizzBuzz(number) {
+      if (number % 3 == 0 && number % 5 == 0) {
+         return "FizzBuzz";
+      }
+
+      if (number % 3 == 0) {
+         return "Fizz";
+      }
+
+      if (number % 5 == 0) {
+         return "Buzz";
+      }
+
+      return number;
+      }
+
+      console.log(fizzBuzz(15));
+      console.log(fizzBuzz(10));
+      console.log(fizzBuzz(9));
+    ```
+
+
+
+
+
+timecode : 41:25
 
