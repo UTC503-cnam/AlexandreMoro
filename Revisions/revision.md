@@ -443,7 +443,7 @@
     var id = "exp"
     ```
 
-    >une boit id qui stocke "exp" (une chaine de catactère)  
+    >une boite id qui stocke "exp" (une chaine de catactère)  
 
     avec
     ```javascript
