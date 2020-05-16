@@ -405,4 +405,54 @@
 
   *Webconf du 03/04/2020*  
 
-  
+  * 5 points à retenir :
+
+    **Notion de séquence d'instructions.**
+
+    ```javascript
+    var nbOranges = 4;
+
+    for(i = 0; i < nbOranges; ++i) {
+         couperOrange();
+         presserOrange();
+         }
+    ```
+    Une séquence d'instruction c'est une "suite" d'instruction, ici on assigne une valeur à une variable `nbOranges` et on fait une boucle sur ce nombre d'orange avec des instructions. C'est cette suite d'instruction qui fera notre programme.
+
+    **Notion d'assignation.**
+
+    On peut assigner à notre boîte avec unidentifiant id plusieurs formes d'expressions. 
+
+    ```javascript
+    var id = "exp";
+    // Ou encore
+    var id = exp / 10 * 10;
+    // Ou encore
+    var id = exp();
+    ```
+
+    La boite est notre identifiant et on est capable d'assigner une expression a cette id sous plusieurs forme :
+    * une chaine de caractère 
+    * un calcul
+    * une fonction
+
+    On peut assigner toute sorte de chose à notre identifiant.
+
+    ! Attention de pas confondre :
+    ```javascript
+    var id = "exp"
+    ```
+
+    >une boit id qui stocke "exp" (une chaine de catactère)  
+
+    avec
+    ```javascript
+    id == "exp"
+
+    //true
+    ```
+
+    >Ici on teste l'égalité du contenu id avec la valeur "exp"
+
+timecode : 11:21
+
