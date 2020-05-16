@@ -83,6 +83,8 @@
 
       * programmeur avec d’autre programmeur
   
+
+
    **paradigme :**  
    du mot *παράδειγμα* (paradeïgma) en grec ancien qui signifie « modèle » ou « exemple » une représentation du monde, une manière de voir les choses, un modèle cohérent du monde qui repose sur un fondement défini (modèle théorique) il fournit des problèmes types et des solutions.
 
@@ -108,7 +110,7 @@
    C'est une forme de programmation sans effets de bord, ayant généralement une correspondance avec la logique mathématique.  
 
    **Programmation descriptive:**  
-   Décrit des mises en forme d’objets graphiques  
+   Décrit des mises en forme **d’objets graphiques**  
    • C’est le moteur de rendu du navigateur qui va interpréter et afficher le résultat
    Exemples : HTML , CSS
 
@@ -126,7 +128,24 @@
 
 ## 3. Revue des chapitres  
 
+* ### 00 - Pour bien démarrer
 
+   Webconf du 28/02/2020  
 
+   Soit le code suivant:
 
-4) 
+   ```javascript
+   var v=5;
+
+   functionf(v, x){
+      v=v+1;
+      return v+x;
+   }
+
+   varz= f(10, 2);
+   ```
+
+   Que valent v et z ?
+  
+   **V = 5**  
+   **Z = 13**  
