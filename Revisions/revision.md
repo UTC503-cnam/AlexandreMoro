@@ -439,6 +439,7 @@
     On peut assigner toute sorte de chose à notre identifiant.
 
     **! Attention de pas confondre :**
+
     ```javascript
     var id = "exp"
     ```
@@ -463,6 +464,7 @@
        return "je mange quand même";
     }
     ```
+
     Exemple en JS, notre if va essayer de savoir si la condition est respectée et va retourner une valeur selon.
 
     Exercice if / else:
@@ -489,9 +491,58 @@
       console.log(fizzBuzz(9));
     ```
 
+    >Rappel modulo donne le reste de la division euclidienne 6 % 3 =0 ; 9 % 7 = 2
+
+    **boucle**
+
+    | ind 0 | ind 1 | ind 2 | ind 3 | ind 4 | ind 5 |
+    | :---: | ----- | ----- | ----- | ----- | ----- |
+    |   8   | 5     | -1    | 5     | 4     | 3     |
+
+    >! le premier indice d'un tableau commence à l'indice 0.  
+
+    ```javascript
+    var tableau = [1, 2, 3] // ex initialisation tableau en javascript
+    ```
+
+    Si l'on souhaite récupérer la valeur :  
+
+    ```javascript
+    tableau[indice]
+    ```
+
+    Pour boucler dans un tableau et afficher toutes les valeurs :
+    ```javascript
+    for(i = 0; i < jeSuisUnTableau.length - 1; ++i) {
+       console.log(jeSuisUnTableau[i]); // instruction qui sera réalisée à chaque passage (boucle)
+       }
+    ```
+
+    Ex: la boucle for, en 3 parties on l'initialisation `i=0`, la condition de sortie `i < jeSuisUnTableau.length - 1`, et le "pas" de l'itération à chaque passage : `++i` .  
+    "tant que i est inférieur a (6-1) (5), on fait ++i a chaque boucle.  
+
+    `++i` ou `i++` ?
+
+    ```javascript
+    var i = 42;
+    var plop = i++
+    console.log(plop); // 42
+    ```
+
+    plop va prendre la valeur de `i`, 42, puis `i` sera incrémenté **après** l'affectation à plop
+
+    ```javascript
+    var i = 42;
+    var plop = ++i;
+    console.log(plop); //43
+    ```
+    Ici plop aura la valeur 43 car l'incrémentation de `i` sera faite avant l'affectation à plop.
+
+    
 
 
 
+    
 
 timecode : 41:25
 
