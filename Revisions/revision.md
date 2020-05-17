@@ -337,41 +337,43 @@ Webconf du 28/02/2020\_
 
 > Interface != classe abstraite
 
-```java
-public interface Ingestable {
-   public void whatHappens();
-}
+- exemple
 
-abstract class Food {
-   abstract void showCalories;
-}
+  ```java
+  public interface Ingestable {
+     public void whatHappens();
+  }
 
-public class Tomatoes extends Food implements Ingestable {
-   void showCalories() {
-      System.out.println(16);
-   }
+  abstract class Food {
+     abstract void showCalories;
+  }
 
-   void whatHappens() {
-      System.out.println("Hum j'adore quand c'est umami");
-   }
-}
+  public class Tomatoes extends Food implements Ingestable {
+     void showCalories() {
+        System.out.println(16);
+     }
 
-public class Lemon extends Food implements Ingestable {
-   void showCalories() {
-      System.out.println(28);
-   }
+     void whatHappens() {
+        System.out.println("Hum j'adore quand c'est umami");
+     }
+  }
 
-   void whatHappens() {
-      System.out.println("Frissons dans le dos");
-   }
-}
+  public class Lemon extends Food implements Ingestable {
+     void showCalories() {
+        System.out.println(28);
+     }
 
-public class poison implements Ingestable {
-   void whatHappens() {
-      System.out.println("Ouuuups...");
-   }
-}
-```
+     void whatHappens() {
+        System.out.println("Frissons dans le dos");
+     }
+  }
+
+  public class poison implements Ingestable {
+     void whatHappens() {
+        System.out.println("Ouuuups...");
+     }
+  }
+  ```
 
 > Un chien et un chat hérite de Animals, mais pas une voiture. Cependant, une voiture, un chat et un chien peuvent tous `bouger()`dans ce cas la on choisira une interface. On va pouvoir lier via l'interface des comportements similaires.
 
