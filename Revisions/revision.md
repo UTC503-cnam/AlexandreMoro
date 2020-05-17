@@ -139,10 +139,10 @@ Webconf du 28/02/2020\_
   varz= f(10, 2);
   ```
 
-Que valent v et z ?
+  Que valent v et z ?
 
-**V = 5**  
- **Z = 13**
+  **V = 5**  
+   **Z = 13**
 
 - Soit le code suivant en Javascript:
 
@@ -156,8 +156,8 @@ Que valent v et z ?
   var r = f(4);
   ```
 
-Que vaut r ?  
- **r = 10**
+  Que vaut r ?  
+   **r = 10**
 
 - Soit le code suivant en Javascript :
 
@@ -171,9 +171,9 @@ Que vaut r ?
   var z = x() + y;
   ```
 
-**x est une fonction avec la même définition que f**  
- **y = 4**  
- **z = 8**
+  **x est une fonction avec la même définition que f**  
+   **y = 4**  
+   **z = 8**
 
 - Lors d’un appel de fonction, les paramètres sont copiés sur quelle mémoire ?
 
