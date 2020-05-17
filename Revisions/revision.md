@@ -390,15 +390,15 @@ public class poison implements Ingestable {
 
 > Certains langages autorisent l'héritage multiple (Python par ex), java ne l'autorise pas.
 
-- ### 01 - Découverte de Git et Github / Aperçu de Typescript
+### 01 - Découverte de Git et Github / Aperçu de Typescript
 
-Webconf du 13/03/2020\_
+- ### Webconf du 13/03/2020\_
 
-@todo : Voir si il est pertinent d'approfondir cette webconf
+- @todo : Voir si il est pertinent d'approfondir cette webconf
 
-- ### 02 - Paradigme de programmation impérative
+### 02 - Paradigme de programmation impérative
 
-Webconf du 03/04/2020
+- ### Webconf du 03/04/2020
 
 - 5 points à retenir :
 
@@ -637,7 +637,7 @@ Webconf du 03/04/2020
   }
   ```
 
-  cette fonction sert juste a retourner true si hero ou vilain n'a plus de pv, sinon on retourne false. Le problème ici c'est que notreméthode a plusieurs responsabilité, elle doit dire si le combat est fini ou pas, et également si hero ou vilain est encore en vie. elle a 3 responsabilité? En général on essaye de rester **SOLID**, S => _single responsability principle_.  
+  cette fonction sert juste a retourner true si `hero` ou `vilain` n'a plus de pv, sinon on retourne `false`. Le problème ici c'est que notre méthode a plusieurs responsabilités, elle doit dire si le combat est fini ou pas, et également si hero ou vilain est encore en vie. Elle a 3 responsabilité. En général on essaye de rester **SOLID**, S => _single responsability principle_.  
   En POO principalement, **nos méthodes et nos classes ne doivent avoir qu'une seule responsabilité**, il nous faut la découper.
 
   ```javascript
@@ -656,4 +656,87 @@ Webconf du 03/04/2020
   }
   ```
 
-timecode : 53:00
+- ### Exercices
+
+1. Sachant qu'une instruction de bouclage peut être vue comme la combinaison d'une instruction de branchement conditionnel et d'une instruction de saut, codez l'algorithme suivant sans instruction de bouclage, mais en utilisant goto et if/else :
+
+   ```c
+   int main(){
+      // factorielle de N = N * (N - 1) * (N - 2) * ( N - i) * ... 1
+      int n = 5;
+      int factorielle = 0;
+      // Codez ici
+      printf(" La factorielle de %d est égale à %d\n", n, factorielle);
+   }
+   ```
+
+   correction :
+
+   ```c
+   int main() {
+   // Factorielle de N = N * (N – 1) * (N – 2) * (N – i) * … * 1
+   int n = 5;
+   int factorielle = 0;
+
+   int i = n;
+   factorielle = 1;
+
+   boucle_debut:
+   factorielle = factorielle * i;
+   i = i - 1;
+   if (i > 0)
+      goto boucle_debut;
+
+   printf("La factorielle de %d est égale à %d\n", n, factorielle);
+   }
+   ```
+
+   > Rien de particulier a commenter, il s'agit de l'exemple repris plus haut dans la webconf.
+
+2. Codez la factorielle avec une instruction de bouclage
+
+   ```c
+   int main(){
+   // factorielle de N = N * (N - 1) * (N - 2) * ( N - i) * ... 1
+   int n = 5;
+   int factorielle = 0;
+   // Codez ici
+   printf(" La factorielle de %d est égale à %d\n", n, factorielle);
+   }
+   ```
+
+   correction :
+
+   ```c
+   int main() {
+   // Factorielle de N = N * (N – 1) * (N – 2) * (N – i) * … * 1
+
+   int n = 5;
+   int factorielle = 0;
+   factorielle = 1;
+   int i = n;
+
+   for(int i = 1; i <= n; i++) // utilisation d'une boucle for
+      factorielle = factorielle * i;
+
+   // Ou encore
+   while (i > 0){  // utilisation d'une boucle while
+   factorielle = factorielle * i;
+   i --;
+   }
+
+   // Ou
+   while(i > 0)
+   factorielle *= i--;
+
+   printf("La factorielle de %d est égale à %d\n", n, factorielle);
+   }
+   ```
+
+   > Premier cas, on utilise une boucle `for`, on se basera sur la valeur de `i`, notre cas de sortie sera `i <= n`, soit quand `i` atteind **5**, on boucle 5 fois car `i++` incrémente `i` de 1 à chaque passage.
+   >
+   > Deuxième cas, on utilise une boucle `while`, "tant que" `i > 0` on constinue notre boucle récursive, à l'intérieur de notre boucle, on décrémente a chaque passage `i` de 1.
+   >
+   > toisième cas, pas de recurisivité, `factoriel` sera égal à `factoriel * i`. **faire `i--` décrémente `i`, une fois l'affectation réalisée** (voir plus haut i++ || i--).
+
+3.
