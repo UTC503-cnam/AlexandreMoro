@@ -496,8 +496,8 @@
     **boucle**
 
     | ind 0 | ind 1 | ind 2 | ind 3 | ind 4 | ind 5 |
-    | :---: | ----- | ----- | ----- | ----- | ----- |
-    |   8   | 5     | -1    | 5     | 4     | 3     |
+    | :---: | :---: | :---: | :---: | :---: | :---: |
+    |   8   |   5   |  -1   |   5   |   4   |   3   |
 
     >! le premier indice d'un tableau commence à l'indice 0.  
 
