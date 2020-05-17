@@ -538,7 +538,7 @@ Webconf du 03/04/2020
 
   Ici plop aura la valeur 43 car l'incrémentation de `i` sera faite avant l'affectation à plop.
 
-  **boucle for**
+- **boucle while**
 
   | ind 0 | ind 1 | ind 2 | ind 3 | ind 4 | ind 5 |
   | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -570,7 +570,7 @@ Webconf du 03/04/2020
 
   ```
 
-  **Branchement avec les goto**
+- **Branchement avec les goto**
 
   ```c
   intmain(){
@@ -590,6 +590,70 @@ Webconf du 03/04/2020
   }
   ```
 
+  ```text
+  initialisation de n à 5
+  initialisation de factorielle à 0
+
+  initialisation de i à la valeur de n, ici 5
+  factorielle vaut désormais 1
+
+  déclaration du marqueur "boucle_debut"
+  factorielle vaut désormais factorielle * i (5 au démarrage)
+  i vaut désormais sa valeur amputé de 1 (4 ensuite et ainsi de suite)
+  si i est supérieur à 0 (condition de sortie)
+  on retourne a boucle_debut tant que la condition de sortie est vraie (true)
+  ```
+
   > L'instruction goto ("va a"), renvoi l'exécution du programme vers la section passée en paramètre, c'est une instruction qu'il est déconseillé d'utiliser, l'enchevêtrement de goto donne un code peu lisible, difficile a maintenir.
+
+- **Fonctions / procédures**
+
+  ```c
+  intfactorielle(int n){
+     if (n == 0) // si n en paramètre vaut 0 (prévention)
+     return 0; // souvent quand il n'y a qu'une seule instruction après le if, les {} sont facultatives
+     if (n == 1) // condition de sortie
+     return 1;
+     return n * factorielle(n - 1); // on retourne cette même fonction avec un nouveau paramètre (récursivité)
+  }
+
+  int main() {
+     // Factorielle de N = N * (N – 1) * (N – 2) * (N – i) * ... * 1
+     int n = 5;
+     printf("La factorielle de %d est égale à %d\n", n, factorielle(5));
+  }
+  ```
+
+  > Notion de responsabilité: un jeux vidéo comporte une fonction Game Over, à cette fonction on lui passe 2 **arguments**, le premier "hero" le deuxième c'est "vilain", si `hero` alors fin du combat, si `vilain` alors fin du combat.
+
+  ```javascript
+  function finDuCombat(hero, vilain) {
+    if (hero.pv === 0) {
+      return true; // fin du combat
+    } else if (vilain.pv === 0) {
+      return true; // fin du combat
+    }
+    return false;
+  }
+  ```
+
+  cette fonction sert juste a retourner true si hero ou vilain n'a plus de pv, sinon on retourne false. Le problème ici c'est que notreméthode a plusieurs responsabilité, elle doit dire si le combat est fini ou pas, et également si hero ou vilain est encore en vie. elle a 3 responsabilité? En général on essaye de rester **SOLID**, S => _single responsability principle_.  
+  En POO principalement, **nos méthodes et nos classes ne doivent avoir qu'une seule responsabilité**, il nous faut la découper.
+
+  ```javascript
+  function finDuCombat(hero, vilain) {
+    if (isDead(hero)) {
+      // notre fonction n'évalue plus les pv du personnage
+      return true;
+    } else if (isDead(vilain)) {
+      return true;
+    }
+    return false;
+  }
+
+  function isDead(personnage) {
+    return personnage.pv <= 0;
+  }
+  ```
 
 timecode : 53:00
