@@ -493,7 +493,7 @@
 
     >Rappel modulo donne le reste de la division euclidienne 6 % 3 =0 ; 9 % 7 = 2
 
-    **boucle**
+    **boucle for**
 
     | ind 0 | ind 1 | ind 2 | ind 3 | ind 4 | ind 5 |
     | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -518,7 +518,7 @@
        }
     ```
 
-    Ex: la boucle for, en 3 parties on l'initialisation `i=0`, la condition de sortie `i < jeSuisUnTableau.length - 1`, et le "pas" de l'itération à chaque passage : `++i` .  
+    Ex: la boucle for, on a 3 parties: l'initialisation `i=0`, la condition de sortie `i < jeSuisUnTableau.length - 1`, et le "pas" de l'itération à chaque passage : `++i` .  
     "tant que i est inférieur a (6-1) (5), on fait ++i a chaque boucle.  
 
     `++i` ou `i++` ?
@@ -538,11 +538,58 @@
     ```
     Ici plop aura la valeur 43 car l'incrémentation de `i` sera faite avant l'affectation à plop.
 
-    
+    **boucle for**
+
+    | ind 0 | ind 1 | ind 2 | ind 3 | ind 4 | ind 5 |
+    | :---: | :---: | :---: | :---: | :---: | :---: |
+    |   8   |   5   |  -1   |   5   |   4   |   3   |
+
+    ```javascript
+    var i = 0
+    while(i < jeSuisUnTableau.length) {
+       console.log(jeSuisUnTableau[i]);
+
+       if(jeSuisUnTableau[i] < 0) {
+        --i;
+       } else {
+        i += 2;
+        }
+       }
+    ```
+
+    ```text
+    Tant que i est inférieur à la longueur du tableau
+      afficher le contenu de l'index i
+
+      si la valeur contenue dans l'index est inférieure à 0
+         décrémenter i de 1 (on va donc à l'index (case précédent)
+      sinon
+         incrémenter i de 2 (on va deux cases plus loin)
+
+      on affiche donc : 8 -1 5 5 3
+
+    ```
+
+    **Branchement avec les goto**  
+
+    ```c
+    intmain(){
+       // Factorielle de N = N * (N – 1) * (N – 2) * (N – i) * ... * 1
+       int n = 5;
+       int factorielle = 0;
+
+       int i = n;
+       factorielle = 1;
+       boucle_debut:
+       factorielle = factorielle * i;
+       i = i - 1;
+       if (i > 0)
+         goto boucle_debut;
+
+       printf("La factorielle de %d est égale à %d\n", n, factorielle);
+    }
+    ```
+    >L'instruction goto ("va a"), renvoi l'exécution du programme vers la section passée en paramètre, c'est une instruction qu'il est déconseillé d'utiliser, l'enchevêtrement de goto donne un code peu lisible, difficile a maintenir.
 
 
-
-    
-
-timecode : 41:25
-
+timecode : 53:00
