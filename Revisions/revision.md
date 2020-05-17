@@ -735,7 +735,7 @@ Webconf du 28/02/2020\_
    }
    ```
 
-   > Premier cas, on utilise une boucle `for`, on se basera sur la valeur de `i`, notre cas de sortie sera `i <= n`, soit quand `i` atteind **5**, on boucle 5 fois car `i++` incrémente `i` de 1 à chaque passage.
+   > Premier cas, on utilise une boucle `for`, on se basera sur la valeur de `i`, notre cas de sortie sera `i <= n`, soit quand `i` atteind **5**. On boucle 5 fois car `i++` incrémente `i` de 1 à chaque passage.
    >
    > Deuxième cas, on utilise une boucle `while`, "tant que" `i > 0` on constinue notre boucle récursive, à l'intérieur de notre boucle, on décrémente a chaque passage `i` de 1.
    >
