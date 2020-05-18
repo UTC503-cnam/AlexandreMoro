@@ -741,4 +741,143 @@ Webconf du 28/02/2020\_
    >
    > toisième cas, pas de recurisivité, `factoriel` sera égal à `factoriel * i`. **faire `i--` décrémente `i`, une fois l'affectation réalisée** (voir plus haut i++ || i--).
 
-3.
+3. Codez la factorielle avec une fonction contenant une instruction de bouclage :
+
+   ```c
+     int factorielle(int n) {
+     // codez ici
+   }
+   int main() {
+     int n = 5;
+     printf(" La factorielle de %d est égale à %d\n", n, factorielle);
+   }
+   ```
+
+   correction :
+
+   ```c
+    int factorielle(int n){
+    if (n == 0)
+      return 0;
+
+    // Sinon
+    int factorielle = 1;
+    while(n > 0){
+      factorielle = factorielle * n;
+      n = n - 1;
+    }
+    return factorielle;
+    }
+
+    int main() {
+    // Factorielle de N = N * (N – 1) * (N – 2) * (N – i) * … * 1
+    int z = 5;
+    printf("La factorielle de %d est égale à %d\n", n, factorielle(z));
+    }
+   ```
+
+   > On crée donc une fonction `factorielle` qui prend en argument un entier `n`.  
+   > Si `n` est égal à 0, on retourne 0 sinon on rentre dans une boucle `while` sans récursion comme vu dans l'exercice 2.
+
+4. Codez la factorielle avec une fonction récursive (sans instruction de bouclage)
+
+   ```c
+   int factorielle(int n){
+     //codez ici
+   }
+   int main(){
+     int n = 5;
+     printf(" la factorielle de %d est égale à %d\n"), n, factorielle(n));
+   }
+   ```
+
+   correction :
+
+   ```c
+   int factorielle(int n){
+    if (n == 0)
+      return 0;
+    if (n == 1)
+      return 1;
+    return n * factorielle(n - 1);
+   }
+
+    int main() {
+    // Factorielle de N = N _ (N – 1) _ (N – 2) _ (N – i) _ … \* 1
+    int n = 5;
+    printf("La factorielle de %d est égale à %d\n", n, factorielle(5));
+    }
+   ```
+
+   > On utilise ici une fonction récursive, c'est à dire que cette fonction s'appelle elle même jusqu'a satisfaire la condition de sortie. Ici cette condition est :
+
+   ```c
+   if (n == 0)
+     return 0;
+   if (n == 1)
+     return 1;
+   ```
+
+   > la condition de sortie donne en quelque sort la première solution à la pile d'appel de fonction.  
+   > Imaginons que quelqu'un demande:  
+   > "Quelle est la valeur de 5! ?"
+   > Que son interlocuteur demande à son tour, "Ben déjà c'est quoi 4!" ?
+   > et ainsi de suite jusqu'a ce qu'on finisse par dire: "Mais 1! = 1", donc 2! = 2, 3 = 6 etc etc etc...
+
+5. Limite de la récursivité
+
+   Quelle limite identifiez-vous aux appels récursifs ?
+
+   _Indice : un site très populaire chez les codeurs porte son nom._
+
+   Stack overflow
+
+   [wikipedia](https://fr.wikipedia.org/wiki/D%C3%A9passement_de_pile)
+
+   > En informatique, un dépassement de pile ou débordement de pile (en anglais, stack overflow) est un bug causé par un processus qui, lors de l'écriture dans une pile, écrit à l'extérieur de l'espace alloué à la pile, écrasant ainsi des informations nécessaires au processus.
+
+   Les appels récursifs si ils sont robustes, sont aussi très gourmand en mémoire car a chaque appel on recopie dans celle-ci la fonction avec ses variables et instructions. Un trop grand nombre d'appel saturera l'espace alloué à notre processus.
+
+6. Pour chaque valeur d'un tableau d'entrée, map consiste à calculer une autre valeur selon un algorithme et à la stocker à la même position dans un tableau résultat. Complétez les 4 fonction mapX.
+
+   ```c
+   #include <stdio.h>
+
+   #define N 5 //constante de préprocesseur
+
+   //Cette directive permet de définir une constante de préprocesseur.
+   //Cela permet d'associer une valeur à un mot. Voici un exemple :
+
+   void mapDouble(int e[], int r[]){
+
+     //Aide : lire la ième case du tableau e : e[i]
+     //Aide : affecter la ième case du tableau r : r : r[i] = valeur;
+     //Aide : le tableau est accessible de 0 à N - 1, ie de e[O] à e[4] en l'occurence
+     //Codez les 3 lignes ici
+   }
+
+   void mapDouble (int e[], int r[] ){
+     //Codez ici
+   }
+   void mapTriple (int e[], int r[] ){
+     //Codez ici
+   }
+   void mapSquare( int e[], int r[] ){
+     //Codez ici
+   }
+   void mapMaximize3(int e[], int r[] ){
+     //Codez ici
+   }
+
+   int main() {
+     int e[N] = {1, 5, 2, 4, 3};
+     int r_double[N];
+     mapDouble(e, r_double); // r_double contiendra {2, 10, 4, 8, 6}
+     int r_triple[N];
+     mapTriple(e, r_triple); // r_triple contiendra {3, 15, 6, 12, 9}
+     int r_square[N];
+     mapMaximize3(e, r_square); //r_square contiendra {1, 25, 4, 16, 9}
+     int r_maximize3[N];
+     mapMaximize3(e, r_maximize3); // r_maximize3 contiendra {1, 3, 2, 3, 3}
+   }
+   ```
