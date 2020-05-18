@@ -853,7 +853,7 @@ Webconf du 28/02/2020\_
      //Aide : lire la ième case du tableau e : e[i]
      //Aide : affecter la ième case du tableau r : r : r[i] = valeur;
      //Aide : le tableau est accessible de 0 à N - 1, ie de e[O] à e[4] en l'occurence
-     //Codez les 3 lignes ici
+   
    }
 
    void mapDouble (int e[], int r[] ){
@@ -881,3 +881,51 @@ Webconf du 28/02/2020\_
      mapMaximize3(e, r_maximize3); // r_maximize3 contiendra {1, 3, 2, 3, 3}
    }
    ```
+
+   correction :
+
+      ```c
+      #define N 5 
+    
+    void mapDouble(int e[], int r[]){
+    for (int i = 0; i < N; i++)
+      r[i] = e[i] * 2;
+    }
+
+    void mapTriple(int e[], int r[]){
+    for (int i = 0; i < N; i++)
+      r[i] = e[i] * 3;
+    }
+    void mapSquare(int e[], int r[]){
+    for (int i = 0; i < N; i++)
+      r[i] = e[i] * e[i];
+    }
+    void mapMaximize3(int e[], int r[]){
+    for (int i = 0; i < N; i++)
+      if (e[i] <= 3)
+        r[i] = e[i];
+      else
+        r[i] = 3;
+      
+      // Ou remplacer le if / else par l'opérateur ternaire ()?:
+      r[i] = e[i] <= 3?e[i]:3;
+    }
+
+    int main() {
+    int e[N] = {1, 5, 2, 4, 3};
+
+    int r_double[N]; mapDouble(e, r_double); // r_double contiendra {2, 10, 4, 8, 6}
+
+    int r_triple[N];
+    mapTriple(e, r_triple); // r_triple contiendra {3, 15, 6, 12, 9}
+
+    int r_square[N];
+    mapSquare(e, r_square); // r_square contiendra {1, 24, 4, 16, 9}
+
+    int r_maximize3[N];
+    mapMaximize3(e, r_maximize3); // r_maximize3 contiendra {1, 3, 2, 3, 3};
+    }
+    ```
+
+   > Dans les faits l'exécution ici est assez simple, on initialise un premier tableau `int e[N] = {1, 5, 2, 4, 3};` , puis on en crée un nouveau pour chaque opération voulue `r_double ; r_triple` ... on appelle ensuite la fonction de l'opération voulue en lui passant le tableau de base `e[]` et le résultat est stocké dans le deuxième tableau en argument. Simple. Cette technique montre vite ces limites, on réécrit beaucoup de code identique et les fonctions elles-même n'ont aucune modularité.
+
