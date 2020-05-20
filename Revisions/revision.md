@@ -1109,3 +1109,119 @@ Webconf du 28/02/2020\_
    five_stars
    hideturtle
    ```
+
+### 03 - Programmation Orientée Objet
+
+- ### Webconf du 17/04/2020
+
+  Big Picture
+
+  POO Une histoire de gaufres
+
+  > Analogie de la gaufre et de la moule à gaufre
+
+  - Le moule à gaufres est notre classe
+  - La gaufre est l'objet _(instance)_
+
+  ```javascript
+  // Notre moule à gaufres
+  class Gaufre {
+    // Du code
+  }
+
+  // Une gaufre
+  var gaufre = new Gaufre();
+  ```
+
+  Pourquoi ? Quel est l'intérêt d'un moule à gaufres et des gaufres ?  
+   L'élément central est de ne pas se répéter au niveau du code -> **D**on't **R**epeat **Y**oursel (D.R.Y)
+
+  Pour commencer nous souhaitons faire des gaufres colorés.
+  On va créer une classe gaufre qui précisera la couleur.
+
+  ```javascript
+  classGaufre{
+    couleur: string; // attribut/propriété initialisé par le constructeur
+
+    construct(couleur: String) {
+      this.couleur = couleur; // Notre constructeur affecte à la propriété d'instance couleur la valeur passée en argument
+      }
+    }
+
+    var gaufreRose = new Gaufre('rose');  // instance avec paramètre de couleur "rose"
+    var gaufreVerte = new Gaufre('verte'); // instance avec paramètrede "verte"
+  ```
+
+  Et nous créons 2 instances de gaufre (2 objets).
+  On a d'un coté un moule à gaufre qui est capable de générer des objets a partir de la classe gaufre en lui précisant les paramètres attendus à la construction.
+
+  `this.couleur = couleur;` Pour construire notre gaufre nous devons spécifier la valeur du paramètre `couleur` de l'instance (`this` = cet(te))
+
+  On souhaite que notre gaufre se comporte différemment en fonction de sa couleur. Une gaufre n'est pas comestible du moment ou elle n'a pas une couleur verte.
+
+  ```typescript
+  class Gaufre {
+    couleur: string;
+
+    constructor(couleur: string) {
+      this.couleur = couleur;
+    }
+    estComestible() {
+      if (this.couleur == "verte") {
+        return false;
+      }
+      return true;
+    }
+  }
+  var gaufreRose = new Gaufre("rose"); // instanciation de la gaufre avec la couleur rose
+  var gaufreVerte = new Gaufre("verte"); // instanciation de la gaufre avec la couleur verte
+
+  gaufreRose.estComestible(); // true
+  gaufreVerte.estComestible(); // false
+  ```
+
+  comme vu précédemment la méthode `estComestible` aurait pu s'écrire :
+
+  ```typescript
+    estComestible() {
+    return this.couleur == "verte" ? false : true;
+    }
+  ```
+
+  Notre gaufre peut avoir des relations avec d'autres objets
+
+  ![Héritage](https://tof.cx/images/2020/05/20/cfa24fb2f04eddd3cd4722b85bff7b66.png)
+
+  Notre gaufre peut tout a fait interagir avec d'aurtes objets, notre gaufre peut hériter d'un autre objet qui est patisserie.
+
+  Ce que cela donne niveau code :
+
+  ```typescript
+
+  classPatisserie{
+      estComestible() {
+         return true } // retourne true par défaut
+  }
+
+  class Gaufre extends Patisserie{ // le mot clé extends précise que l'on hérite de la classe mère Patisserie
+      couleur: string;
+
+  construct(couleur: String) {
+    this.couleur = couleur;
+  }
+
+  estComestible() { // override il y a un comportement spécifique
+    if(this.couleur == 'verte') {
+    return false;
+    }
+
+    return true;
+    }
+  }
+
+  class Macaron extends Patisserie{
+    // pas d'override Macaron.estComestible() retourne true par défaut
+  }
+  ```
+
+  timecode 20:41
