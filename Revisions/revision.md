@@ -1197,29 +1197,31 @@ Webconf du 28/02/2020\_
   Ce que cela donne niveau code :
 
   ```typescript
-
-  classPatisserie{
-      estComestible() {
-         return true } // retourne true par défaut
+  class Patisserie {
+    estComestible() {
+      return true;
+    } // retourne true par défaut
   }
 
-  class Gaufre extends Patisserie{ // le mot clé extends précise que l'on hérite de la classe mère Patisserie
-      couleur: string;
+  class Gaufre extends Patisserie {
+    // le mot clé extends précise que l'on hérite de la classe mère Patisserie
+    couleur: string;
 
-  constructor(couleur: String) {
-    this.couleur = couleur;
-  }
-
-  estComestible() { // override il y a un comportement spécifique
-    if(this.couleur == 'verte') {
-    return false;
+    constructor(couleur: String) {
+      this.couleur = couleur;
     }
 
-    return true;
+    estComestible() {
+      // override il y a un comportement spécifique
+      if (this.couleur == "verte") {
+        return false;
+      }
+
+      return true;
     }
   }
 
-  class Macaron extends Patisserie{
+  class Macaron extends Patisserie {
     // pas d'override Macaron.estComestible() retourne true par défaut (valeur de la classe mère)
     // pas de construct car on n'introduit pas de méthode / attibrut particulier
   }
