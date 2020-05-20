@@ -853,7 +853,7 @@ Webconf du 28/02/2020\_
      //Aide : lire la ième case du tableau e : e[i]
      //Aide : affecter la ième case du tableau r : r : r[i] = valeur;
      //Aide : le tableau est accessible de 0 à N - 1, ie de e[O] à e[4] en l'occurence
-   
+
    }
 
    void mapDouble (int e[], int r[] ){
@@ -884,106 +884,228 @@ Webconf du 28/02/2020\_
 
    correction :
 
-      ```c
-      #define N 5 
-    
-    void mapDouble(int e[], int r[]){
-    for (int i = 0; i < N; i++)
-      r[i] = e[i] * 2;
-    }
+   ```c
+   #define N 5
 
-    void mapTriple(int e[], int r[]){
-    for (int i = 0; i < N; i++)
-      r[i] = e[i] * 3;
-    }
-    void mapSquare(int e[], int r[]){
-    for (int i = 0; i < N; i++)
-      r[i] = e[i] * e[i];
-    }
-    void mapMaximize3(int e[], int r[]){
-    for (int i = 0; i < N; i++)
-      if (e[i] <= 3)
-        r[i] = e[i];
-      else
-        r[i] = 3;
-      
-      // Ou remplacer le if / else par l'opérateur ternaire ()?:
-      r[i] = e[i] <= 3?e[i]:3;
-    }
+   void mapDouble(int e[], int r[]){
+   for (int i = 0; i < N; i++)
+   r[i] = e[i] * 2;
+   }
 
-    int main() {
-    int e[N] = {1, 5, 2, 4, 3};
+   void mapTriple(int e[], int r[]){
+   for (int i = 0; i < N; i++)
+   r[i] = e[i] * 3;
+   }
+   void mapSquare(int e[], int r[]){
+   for (int i = 0; i < N; i++)
+   r[i] = e[i] * e[i];
+   }
+   void mapMaximize3(int e[], int r[]){
+   for (int i = 0; i < N; i++)
+   if (e[i] <= 3)
+     r[i] = e[i];
+   else
+     r[i] = 3;
 
-    int r_double[N]; mapDouble(e, r_double); // r_double contiendra {2, 10, 4, 8, 6}
+   // Ou remplacer le if / else par l'opérateur ternaire ()?:
+   r[i] = e[i] <= 3?e[i]:3;
+   }
 
-    int r_triple[N];
-    mapTriple(e, r_triple); // r_triple contiendra {3, 15, 6, 12, 9}
+   int main() {
+   int e[N] = {1, 5, 2, 4, 3};
 
-    int r_square[N];
-    mapSquare(e, r_square); // r_square contiendra {1, 24, 4, 16, 9}
+   int r_double[N]; mapDouble(e, r_double); // r_double contiendra {2, 10, 4, 8, 6}
 
-    int r_maximize3[N];
-    mapMaximize3(e, r_maximize3); // r_maximize3 contiendra {1, 3, 2, 3, 3};
-    }
-    ```
+   int r_triple[N];
+   mapTriple(e, r_triple); // r_triple contiendra {3, 15, 6, 12, 9}
+
+   int r_square[N];
+   mapSquare(e, r_square); // r_square contiendra {1, 24, 4, 16, 9}
+
+   int r_maximize3[N];
+   mapMaximize3(e, r_maximize3); // r_maximize3 contiendra {1, 3, 2, 3, 3};
+   }
+   ```
 
    > Dans les faits l'exécution ici est assez simple, on initialise un premier tableau `int e[N] = {1, 5, 2, 4, 3};` , puis on en crée un nouveau pour chaque opération voulue `r_double ; r_triple` ... on appelle ensuite la fonction de l'opération voulue en lui passant le tableau de base `e[]` et le résultat est stocké dans le deuxième tableau en argument. Simple. Cette technique montre vite ces limites, on réécrit beaucoup de code identique et les fonctions elles-même n'ont aucune modularité.
 
-7. Dans ex6, d'une fonction à l'autre, n'avez-vous pas éprouvé une sensation de "déjà-vue" ?  
-Peut-on factoriser ce code ?
-Quel mécanisme nous faudrait-il ?
+7. Dans ex6, d'une fonction à l'autre, n'avez-vous pas éprouvé une sensation de "déjà-vue" ?
+
+   Peut-on factoriser ce code ?
+   Quel mécanisme nous faudrait-il ?
 
    Lambda fonction ou pointeur de fonction.
 
-    ```c
-    #define N 5
-    
-    void mapDouble(int e[], int r[]){
-      for (int i = 0; i < N; i++)
-        r[i] = e[i] * 2;
-    }
+   ```c
+   #define N 5
 
-    void mapTriple(int e[], int r[]){
-      for (int i = 0; i < N; i++)
-        r[i] = e[i] * 3;
-    }
-    void mapSquare(int e[], int r[]){
-      for (int i = 0; i < N; i++)
-        r[i] = e[i] * e[i];
-    }
-    void mapMaximize3(int e[], int r[]){
-      for (int i = 0; i < N; i++)
-        r[i] = e[i] <= 3?e[i]:3;
-    }
+   void mapDouble(int e[], int r[]){
+     for (int i = 0; i < N; i++)
+       r[i] = e[i] * 2;
+   }
 
-    int my_double(int v){
-        return v * 2;
-    }
+   void mapTriple(int e[], int r[]){
+     for (int i = 0; i < N; i++)
+       r[i] = e[i] * 3;
+   }
+   void mapSquare(int e[], int r[]){
+     for (int i = 0; i < N; i++)
+       r[i] = e[i] * e[i];
+   }
+   void mapMaximize3(int e[], int r[]){
+     for (int i = 0; i < N; i++)
+       r[i] = e[i] <= 3?e[i]:3;
+   }
 
-    int my_triple(int v){
-        return v * 3;
-    }
-      
-    void map(int e[], int r[], int (*pointeurSurFonction)(int)){
-      for (int i = 0; i < N; i++)  
-        r[i] = pointeurSurFonction(e[i]);
-    }
+   int my_double(int v){
+       return v * 2;
+   }
 
-    int main() {
-      int e[N] = {1, 5, 2, 4, 3};
-      int r_double[N]; 
-      mapDouble(e, r_double); // r_double contiendra {2, 10, 4, 8, 6}
-      int r_triple[N];
-      mapTriple(e, r_triple); // r_triple contiendra {3, 15, 6, 12, 9}
-      int r_square[N];
-      mapSquare(e, r_square); // r_square contiendra {1, 24, 4, 16, 9}
-      int r_maximize3[N];
-      mapMaximize3(e, r_maximize3); // r_maximize3 contiendra {1, 3, 2, 3, 3};
-      int r_double_2[N];
-      // Passage de la fonction 'my_double' en paramètre de map
-      map(e, r_double_2, &my_double);
-      int r_double_2[N];
-      // Passsage de la fonction 'my_triple' en paramètre de map
-      map(e, r_double_2, &my_triple);
-    }
-    ```
+   int my_triple(int v){
+       return v * 3;
+   }
+
+   void map(int e[], int r[], int (*pointeurSurFonction)(int)){
+     for (int i = 0; i < N; i++)
+       r[i] = pointeurSurFonction(e[i]);
+   }
+
+   int main() {
+     int e[N] = {1, 5, 2, 4, 3};
+     int r_double[N];
+
+     mapDouble(e, r_double); // r_double contiendra {2, 10, 4, 8, 6}
+     int r_triple[N];
+
+     mapTriple(e, r_triple); // r_triple contiendra {3, 15, 6, 12, 9}
+     int r_square[N];
+
+     mapSquare(e, r_square); // r_square contiendra {1, 24, 4, 16, 9}
+     int r_maximize3[N];
+
+     mapMaximize3(e, r_maximize3); // r_maximize3 contiendra {1, 3, 2, 3, 3};
+     int r_double_2[N];
+
+     // Passage de la fonction 'my_double' en paramètre de map
+
+     map(e, r_double_2, &my_double);
+     int r_double_2[N];
+
+     // Passsage de la fonction 'my_triple' en paramètre de map
+     map(e, r_double_2, &my_triple);
+
+   }
+   ```
+
+   > Pointeur vers une fonction retournant un int et prenant un int comme paramètre: `int (*pf)(int);` . La fonction `void map(int e[], int r[], int (*pointeurSurFonction)(int))` prend donc en argument la table de départ `int e[]` , la table de sortie int `r[]`, et le pointeur vers la fonction qui effectuera l'opération `int (*pointeurSurFonction)(int))`.  
+   >  l'appel s'effectue de cette manière: `map(e, r_double_2, &my_double);` avec `&my_double` l'appel à l'adresse de la fonction (le pointeur).
+
+8. Analyse de 3 codes:
+
+   code 1:
+
+   ```C
+   dessineTriangle( int x, int y, bool gras ) {
+     positionneCrayon(x, y);
+     traceTriangle();
+     if (gras) {
+       positionneCrayon(x, y);
+       pause(5);
+       traceTriangle();
+     }
+   }
+
+   dessineEtoile(int x, int y, bool gras, int nbBranche){
+     positionneCrayon(x, y);
+     traceEtoile(nbBranche);
+     if (gras){
+       positionneCrayon(x, y);
+       pause(5);
+       traceEtoile(nbBranche);
+     }
+   }
+   ```
+
+   code 2:
+
+   ```C
+   dessine(int figure, int x, int y, bool gras, int nbBranche){
+     positionneCrayon(x ,y);
+     swicth(figure){
+       case TRIANGLE: traceTriangle(); break;
+       case ETOILE: traceEtoile(nbBranche); break;
+     }
+     if (gras){
+       PositionneCrayon(x, y);
+       pause(5)
+       switch(figure) {
+         case TRIANGLE: traceTriangle(); break;
+         case ETOILE: traceEtoile(nbBranche); break;
+       }
+     }
+   }
+   ```
+
+   code 3:
+
+   ```c
+   dessine(int figure, int x, int y, bool gras, int nbBranche) {
+     positionneCrayon(x, y);
+     trace(figure, nbBranche);
+     if(gras){
+       PositionneCrayon(x, y);
+       pause(5);
+       trace(figure, nbBranche);
+     }
+   }
+   ```
+
+   Que pensez-vous de ces 3 codes : avantages / inconvénients ?
+
+   Ce qu'il faudrait c'est le paradigme de programmation Objet,
+   car on pourrait redefinir la méthode 'trace' avec un comportement spécifique pour les classes Triangle et Etoile.
+   Ca s'appelle du polymorphisme.
+
+9. Pour le fun
+
+   Dessiner 5 étoiles en Logo
+
+   ```logo
+   to star
+   ; dessine une étoile
+   rt 18
+   repeat 5 [ fd 50 rt 144 fd 50 lt 72]
+   lt 18
+   end
+   to move
+   ; se déplace à droite
+   penup
+   rt 90
+   fd 150
+   lt 90
+   pendown
+   end
+   to n_stars :nombre
+   ; dessine 5 étoiles
+   repeat :nombre [ star move]
+   ; cache la tortue
+   hideturtle
+   end
+   to five_stars
+   n_stars 5
+   end
+   to init
+   clearscreen
+   ; pinceau de couleur jaune
+   setpencolor 6
+   ; se placer à gauche de l'écran
+   penup
+   lt 90
+   fd 300
+   rt 90
+   pendown
+   end
+   init
+   five_stars
+   hideturtle
+   ```
