@@ -1206,7 +1206,7 @@ Webconf du 28/02/2020\_
   class Gaufre extends Patisserie{ // le mot clé extends précise que l'on hérite de la classe mère Patisserie
       couleur: string;
 
-  construct(couleur: String) {
+  constructor(couleur: String) {
     this.couleur = couleur;
   }
 
@@ -1220,8 +1220,11 @@ Webconf du 28/02/2020\_
   }
 
   class Macaron extends Patisserie{
-    // pas d'override Macaron.estComestible() retourne true par défaut
+    // pas d'override Macaron.estComestible() retourne true par défaut (valeur de la classe mère)
+    // pas de construct car on n'introduit pas de méthode / attibrut particulier
   }
   ```
 
-  timecode 20:41
+  `super` : mot clé qui permet d'injecter lors de la construction de notre objet les propriétés de la classe mère.
+
+timecode 23:55
