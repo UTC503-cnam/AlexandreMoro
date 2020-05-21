@@ -658,7 +658,7 @@ Webconf du 28/02/2020\_
   }
   ```
 
-- ### Exercices
+Exercices
 
 1. Sachant qu'une instruction de bouclage peut être vue comme la combinaison d'une instruction de branchement conditionnel et d'une instruction de saut, codez l'algorithme suivant sans instruction de bouclage, mais en utilisant goto et if/else :
 
@@ -1400,3 +1400,105 @@ Notre classe ComboFactory va interroger dans le bon ordre, _Es-tu une QFR?_, _es
 Dès qu'elle tombe sur une réponse positive, elle va instancier la classe _carre_ (par ex) et celui-ci va hérité des choses communes à tous les combos.
 
 Je n'ai rien compris au code en RUBY...
+
+**Exercices :**
+
+Ex1: Figures géométriques
+
+- Une figure a un nombre de côtés.
+- Tous les côtés ont la même taille.
+- La taille varie d’une instance de Figure à une autre.
+- Une figure a un périmètre.
+- Une figure a une aire.
+- On pourra demander à une figure un rapport retourné dans une chaîne de caractères, contenant son type, ses propriétés, son périmètre, son aire et autre propriétés spécifiques.
+- Un triangle est une figure.
+- La hauteur d’un triangle de côté A est A x racinecarree(3) / 2
+- Un losange est une figure.
+- On pourra demander à un losange si c’est un carré
+- Selon ces informations, complétez le code TypeScript suivant:
+
+```typescript
+let t1 = Triangle(5);
+let t2 = Triangle(10);
+let l1 = losange(5, 6); // diagonale 1, diagonale 2
+let l2 = losange(4, 4);
+
+let figures: Figure[] = [t1, t2, l1, l2];
+
+for (let f of figures) {
+  console.log(f.rapport());
+}
+```
+
+Correction:
+
+```typescript
+abstract class Figure {
+  //notre classe abstraite va contenir tous les éléments communs à nos figures
+
+  private nbCote: number; // A noter le modificateur private, servira uniquement à perimetre()
+  protected tailleCote: number; // protected > ne sera accessible qu'a la classe et les classes filles
+
+  constructor(nbCote: number, tailleCote: number) {
+    this.nbCote = nbCote;
+    this.tailleCote = tailleCote;
+  }
+
+  perimetre() {
+    return this.nbCote * this.tailleCote;
+  }
+
+  abstract aire();
+
+  rapport() {
+    return `Aire: ${this.aire()}, Perimetre: ${this.perimetre()}`;
+  }
+}
+
+class Triangle extends Figure {
+  constructor(tailleCote: number) {
+    super(3, tailleCote); // on appelle le constructeur de la classe mère
+  }
+
+  aire() {
+    return (Math.pow(this.tailleCote, 2) * Math.pow(3, 0.5)) / 4;
+  }
+
+  rapport() {
+    return "Triangle, " + super.rapport();
+  }
+}
+
+class Losange extends Figure {
+  private diag1: number;
+  private diag2: number;
+
+  constructor(diag1: number, diag2: number) {
+    super(4, Math.pow(Math.pow(diag1 / 2, 2) + Math.pow(diag2 / 2, 2), 0.5));
+    this.diag1 = diag1;
+    this.diag2 = diag2;
+  }
+
+  estUnCarre() {
+    return this.diag1 == this.diag2;
+  }
+
+  aire() {
+    return (this.diag1 * this.diag2) / 2;
+  }
+
+  rapport() {
+    return "Losange, " + super.rapport();
+  }
+}
+
+let t1 = new Triangle(5);
+let t2 = new Triangle(10);
+let l1 = new Losange(5, 6); // diagonale1, diagonale2
+let l2 = new Losange(4, 4);
+
+let figures: Figure[] = [t1, t2, l1, l2];
+for (let f of figures) {
+  console.log(f.rapport());
+}
+```
