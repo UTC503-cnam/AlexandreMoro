@@ -1322,7 +1322,7 @@ Webconf du 28/02/2020\_
   |    + allumer(): void    |
   |     +lancer(): void     |
 
-C'est ce regroupement qui va être l'encapsulation, notre machine à café contient des données qui seront manipulées par des méthodes qui seront ou non accesible depuis l'extérieur.
+C'est ce regroupement qui va être l'encapsulation, notre machine à café contient des données qui seront manipulées par des méthodes qui seront ou non accessiblent depuis l'extérieur.
 
 Pourquoi public / private ? : Notre machine a café va devoir garantir l'intégrité des données, on va faire en sorte que l'on puisse pas modifier des données sans notre accord, il faut restreindre l'accès.
 
