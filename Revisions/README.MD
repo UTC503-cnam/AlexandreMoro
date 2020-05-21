@@ -1315,11 +1315,12 @@ Webconf du 28/02/2020\_
 
   _Méthodes qui manipulent les données:_
 
+  |                         |
   | :---------------------: |
   | - chaufferLEau() : void |
-  | - moudre() : void |
-  | + allumer(): void |
-  | +lancer(): void |
+  |    - moudre() : void    |
+  |    + allumer(): void    |
+  |     +lancer(): void     |
 
 C'est ce regroupement qui va être l'encapsulation, notre machine à café contient des données qui seront manipulées par des méthodes qui seront ou non accesible depuis l'extérieur.
 
