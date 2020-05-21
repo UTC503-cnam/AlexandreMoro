@@ -1229,4 +1229,60 @@ Webconf du 28/02/2020\_
 
   `super` : mot clé qui permet d'injecter lors de la construction de notre objet les propriétés de la classe mère.
 
-timecode 23:55
+  Pour accompagner notre gaufre quoi demieux qu'un café ? (insérer ici une référence au bureau des légendes).  
+  On a une machine à café et plusieurs actions sont possibles :
+  Certaines actions ici sont réalisables directement par l'utilisateur et d'autres sont faites par la machine elle-même.
+
+  - Lancer mon café -> _Utilisateur_
+  - Chauffer l'eau -> _Machine_
+  - Allumer la machine -> _Utilisateur_
+  - Moudre le café -> _Machine_
+
+  |       Action       | Visibilité |
+  | :----------------: | :--------: |
+  |  Lancer mon café   |     +      |
+  |   Chauffer l'eau   |     -      |
+  | Allumer la machine |     +      |
+  |   Moudre le café   |     -      |
+
+  ```typescript
+  class MachineACafe {
+    power: boolean;
+
+    constructor() {
+      this.power = false;
+    }
+
+    public allumerMachine() {
+      // public méthode visible : MachineACafe.allumerMachine()
+      this.power = true;
+    }
+
+    public lancerCafe() {
+      if (this.power) {
+        this.chaufferLEau();
+        this.moudreLesGrains();
+        // Code
+      }
+    }
+
+    private chaufferLEau() {
+      // Méthode non visible, mécanique interne à la machine
+      // Code
+    }
+    private moudreLesGrains() {
+      // idem
+      // Code
+    }
+  }
+  ```
+
+  Nos méthodes ou attributs de notre classe ne sont accessibles depuis l'extérieur que si nécessaire.
+  Ceci afin d'avoir une approche défensive : si ce n'est pas une nécessité d'y accéder depuis l'extérieur on ne le rend pas visible.
+
+  **Les 4 piliers de la POO :**
+
+  - Abstraction
+  - Encapsulation
+  - Héritage
+  - Polymorphisme
