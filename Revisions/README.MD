@@ -1278,7 +1278,7 @@ Webconf du 28/02/2020\_
   ```
 
   Nos méthodes ou attributs de notre classe ne sont accessibles depuis l'extérieur que si nécessaire.
-  Ceci afin d'avoir une approche défensive : si ce n'est pas une nécessité d'y accéder depuis l'extérieur on ne le rend pas visible.
+  Ceci afin d'avoir une approche défensive : si ce n'est pas une nécessité d'y accéder depuis l'extérieur on ne le rend pas visible (effets de bords, sécurisation des données, confidentialité...)
 
   **Les 4 piliers de la POO :**
 
@@ -1286,3 +1286,117 @@ Webconf du 28/02/2020\_
   - Encapsulation
   - Héritage
   - Polymorphisme
+
+  **L'abstraction :**
+
+  Reprenons l'exemple de la gaufre :
+
+  ```typescript
+  abstract class Patisserie {
+    abstract estComestible() {}
+  }
+  ```
+
+  En rajoutant absctract, nous obtenons une classe abstraite. Cette classe ne sera plus instanciable, on instinciera des gaufres mais pas patisserie, le corps de la méthode ne possède que des méthodes abstraites (méthode sans corps).
+  **Déclarer une méthode abstraite obligera les enfants à implanter quelque chose dans cette méthode.**
+
+  Un des risque que l'on peut avoir à définir un comportement par défaut dans patisserie, c'est des effets de bords Par ex, un donut qui instancie patisserie et qui ne serait pas comestible retournerait true pour `Donut.estComestible()` ?
+
+  **L'encapsulation :**
+
+  **_Diagramme UML :_**
+
+  _Données:_
+
+  |     Machine a café     |
+  | :--------------------: |
+  | - température : number |
+  |    +power : boolean    |
+
+  _Méthodes qui manipulent les données:_
+
+  |                         |
+  | :---------------------: |
+  | - chaufferLEau() : void |
+  |    - moudre() : void    |
+  |    + allumer(): void    |
+  |     +lancer(): void     |
+
+C'est ce regroupement qui va être l'encapsulation, notre machine à café contient des données qui seront manipulées par des méthodes qui seront ou non accesible depuis l'extérieur.
+
+Pourquoi public / private ? : Notre machine a café va devoir garantir l'intégrité des données, on va faire en sorte que l'on puisse pas modifier des données sans notre accord, il faut restreindre l'accès.
+
+getters & setters : (accesseurs) définit un moyen sûr d'accès et de modifications des données encapsulées.
+
+Protected : Un private mais qui est accessible depuis les classes héritées mais pas depuis l'extérieur.
+
+Public : open bar !
+
+**L'héritage :**
+
+Chat, Chien, Cheval, Mouton sont des...
+
+![héritage](https://tof.cx/images/2020/05/21/6bb9fbbba3f98f7c7dd0d4b3120a14be.png)
+
+Avec 4 classes distinctes on se retrouve avec beaucoup de redondance de code (pas canada **DRY**)
+
+![zanimal](https://tof.cx/images/2020/05/21/6b2d0fc664b13e7475a0ceb23c189fa0.png)
+
+On peut organiser les éléments similaire sous la forme d'un héritage depuis une classe mère.
+
+! Attention à l"héritage, lien à étudier :
+[go](https://www.synbioz.com/blog/tech/la-composition-a-la-rescousse-de-lheritage)
+
+**Polymorphisme :**
+
+Exemple avec le design pattern DP Factory
+
+- Outils de communication
+- Catalogue
+- Intelligence collective
+
+On a regoupé au sein d'un catalogue des pratiques efficaces suite à des retours d'expérience de développeurs.
+
+Patron de conception factory
+
+On va avoir une classe _main de poker_ a qui on va donner 5 cartes (un tableau de 5 cartes), et à partir de ce tableau de 5 cartes, elle nous ressortira le type (paire d'as ...) et le kicker (quelle carte va départager une égalité).
+
+Si on devait l'implémenter on aurait quelque chose qui ressemble à ça :
+
+```typescript
+class PokerHand {
+  cards: Array<String>;
+
+  constructor(cards: Array<String>) {
+    this.cards = cards;
+  }
+
+  type() {
+    // Si QFR
+    // sinon si QF
+    // sinon si Carre
+    // ...
+  }
+
+  kicker() {
+    // Si type() === brelan
+    // Si type() === paire
+    // Si type() === double paire
+  }
+}
+```
+
+Code très difficile à maintenir: par ex si on doit rajouter des nouvelles règles.  
+Une des possiblités pour éviter ce problème est d'utiliser le design pattern factory.
+
+ComboFactory, c'est une classe qui reçoit les 5 cartes et puis a coté de celle-ci on va avoir une classe par combo:
+
+- une classe QFR
+- une classe QF
+- une classe carre
+- etc ...
+
+Notre classe ComboFactory va interroger dans le bon ordre, _Es-tu une QFR?_, _es-tu une QF?_, etc ...  
+Dès qu'elle tombe sur une réponse positive, elle va instancier la classe _carre_ (par ex) et celui-ci va hérité des choses communes à tous les combos.
+
+Je n'ai rien compris au code en RUBY...
