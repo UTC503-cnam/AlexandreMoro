@@ -28,11 +28,11 @@ class Triangle extends Figure {
   }
 
   aire() {
-    return (Math.pow(this.tailleCote, 2) * Math.pow(3, 0.5)) / 4; // Implantation de la méthode aire()
+    return (Math.pow(this.tailleCote, 2) * Math.pow(3, 0.5)) / 4; // Implantation de la méthode aire() obligatoire
   }
 
   rapport() {
-    return "Triangle, " + super.rapport();
+    return "Triangle, " + super.rapport(); // on précise la méthode mère en l'invoquant via super
   }
 }
 
