@@ -1433,7 +1433,7 @@ for (let f of figures) {
 Correction:
 
 ```typescript
-abstract class Figure {
+export abstract class Figure {
   //notre classe abstraite va contenir tous les éléments communs à nos figures
 
   private nbCote: number; // A noter le modificateur private, servira uniquement à perimetre()
@@ -1444,28 +1444,30 @@ abstract class Figure {
     this.tailleCote = tailleCote;
   }
 
-  perimetre() {
+  perimetre(): number {
+    // methode d'instance
     return this.nbCote * this.tailleCote;
   }
 
-  abstract aire();
+  abstract aire(): number; // méthode abstraite (sans  corps), son implantation sera obligatoire dans les classes dérivées
 
-  rapport() {
+  rapport(): string {
     return `Aire: ${this.aire()}, Perimetre: ${this.perimetre()}`;
   }
 }
 
 class Triangle extends Figure {
+  // extends -> dérive de la classe Figure
   constructor(tailleCote: number) {
     super(3, tailleCote); // on appelle le constructeur de la classe mère
   }
 
   aire() {
-    return (Math.pow(this.tailleCote, 2) * Math.pow(3, 0.5)) / 4;
+    return (Math.pow(this.tailleCote, 2) * Math.pow(3, 0.5)) / 4; // Implantation de la méthode aire() obligatoire
   }
 
   rapport() {
-    return "Triangle, " + super.rapport();
+    return "Triangle, " + super.rapport(); // on précise la méthode mère en l'invoquant via super
   }
 }
 
@@ -1483,12 +1485,14 @@ class Losange extends Figure {
     return this.diag1 == this.diag2;
   }
 
-  aire() {
+  aire(): number {
     return (this.diag1 * this.diag2) / 2;
   }
 
   rapport() {
-    return "Losange, " + super.rapport();
+    return (
+      "Losange, " + super.rapport() + " est-il un carré ? " + this.estUnCarre()
+    );
   }
 }
 
