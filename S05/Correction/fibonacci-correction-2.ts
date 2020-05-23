@@ -16,7 +16,7 @@ export class Fibonacci implements Iterateur<number> {
   private n_minus_1: number;
   private n_minus_2: number;
   private current_value: number;
-  private observer: FibonacciObserver;
+  private observer: FibonacciObserver | null;
 
   constructor(n_max: number) {
     this.n_max = n_max;
