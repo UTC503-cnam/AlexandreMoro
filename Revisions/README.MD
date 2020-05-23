@@ -1506,3 +1506,36 @@ for (let f of figures) {
   console.log(f.rapport());
 }
 ```
+
+### 04 - Programmation fonctionnelle
+
+- Webconf du 30/04/2020
+
+  - Une approche impérative anticipe une suite d'instructions à suivre dans l'ordre et qui va modifier l'état du programme.
+
+  - Une approche déclarative, décrit des règles indépendantes qui seront appelées en fonction d'un évènement
+
+En reprenant l'exemple de FizzBuzz: 
+
+```typescript
+let numbers = [12,15,4];
+let newNumbers = [];
+
+for(i = 0; i < numbers.length; i++) {
+    let res;
+    
+    if(numbers[i] % 3 == 0 && numbers[i] % 5 == 0) {
+    res = 'FizzBuzz';
+    } else if(numbers[i] % 3 == 0) {
+    res = 'Fizz';
+    } else if(numbers[i] % 5 == 0) {
+    res = 'Buzz';
+    } else {
+    res = numbers[i]
+    }
+    newNumbers.push(res);
+}
+
+console.log(newNumbers);
+```
+
