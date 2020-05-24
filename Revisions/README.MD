@@ -1644,10 +1644,21 @@ Plus d'erreurs irréversibles ? Si une erreur d'écriture intervient (crédit au
 
 Testabilité : 
 
-- Limiter les régressions (si jamais quelqu'un modifiait le code, et ne fonctionnait plus, les tests automatisé informe de la régression)
+- Limiter les régressions (si jamais quelqu'un modifiait le code et que le programme ne fonctionnait plus, les tests automatisés informe de la régression)
 - Améliorer la qualité de notre code, les tests sont des crash tests pour le code. 
 
+Les tests permettent de détecter les erreurs mais aussi de vérifier comment se comporte le programme sur une erreur volontaire.
 
+Par exemple sur ce bout de code :
 
+```typescript
+function HelloUser(user: string) {
+    console.log(Hello ${user} !);
+}
+```
 
+Comment doit réagir mon programme si je lui passe un number en argument, ou une chaine de caractère vide etc ?
 
+Faire des tests allant a contre courant du fonctionnement normal du programme améliore la qualité de notre code.
+
+ 
