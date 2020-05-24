@@ -1515,7 +1515,9 @@ for (let f of figures) {
 
   - Une approche déclarative, décrit des règles indépendantes qui seront appelées en fonction d'un évènement
 
-En reprenant l'exemple de FizzBuzz: 
+- **Impératif**
+
+En reprenant l'exemple de FizzBuzz qui itère sur un tableau : 
 
 ```typescript
 let numbers = [12,15,4];
@@ -1539,3 +1541,37 @@ for(i = 0; i < numbers.length; i++) {
 console.log(newNumbers);
 ```
 
+et nous retourne un nouveau tableau de valeur `newNumbers` 
+
+- **Déclaratif**
+
+```typescript
+function fizz(x: number): string {
+  return x % 3 == 0 ? "Fizz" : "";
+}
+function buzz(x: number): string {
+  return x % 5 == 0 ? "Buzz" : "";
+}
+function fizzbuzz(x: number, fizz: Function, buzz: Function): string {
+  return fizz(x) == buzz(x) ? x.toString() : fizz(x) + buzz(x);
+}
+console.log([12, 15, 4].map((x) => fizzbuzz(x, fizz, buzz)));
+```
+
+La démarche est différente, dans un premier cas on déclare une "brique" dont le but est de faire une opération et ensuite on aura des briques un peu plus grosse qui les assemblera.
+
+*En conclusion :* 
+
+- Impératif vs déclaratif : 
+
+  - Impératif : On modifie l'état de notre programme en appliquant une suite d'opérations.
+
+  - Déclaratif : On déclare ce dont on a besoin (des briques de différentes couleurs / tailles, ou des assemblages de briques) Puis on s'en sert pour obtenir le résultat souhaité
+
+**La programmation fonctionnelle est une sous catégorie de la programmation déclarative.**
+
+Pourquoi faire de la programmation fonctionnelle ?
+
+- La notion de concurrence, exécuter plusieurs tâches en parallèle (meilleure gestion des états au niveau de la concurrence), moins de problèmes de concurrence pour l'accès aux données.
+- La "Scalabilité", pour une application qui va être amenée a grossir dans le temps, l'approche fonctionnelle étant issue de plusieurs briques simples se sera plus agréable à gêrer qu'une approche impérative trop monolythique.
+-  
