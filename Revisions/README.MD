@@ -1,3 +1,5 @@
+
+
 # Revision UTC503 Covid edition
 
 ## 1. Définitions générales
@@ -1573,5 +1575,79 @@ La démarche est différente, dans un premier cas on déclare une "brique" dont 
 Pourquoi faire de la programmation fonctionnelle ?
 
 - La notion de concurrence, exécuter plusieurs tâches en parallèle (meilleure gestion des états au niveau de la concurrence), moins de problèmes de concurrence pour l'accès aux données.
-- La "Scalabilité", pour une application qui va être amenée a grossir dans le temps, l'approche fonctionnelle étant issue de plusieurs briques simples se sera plus agréable à gêrer qu'une approche impérative trop monolythique.
--  
+- La "Scalabilité", pour une application qui va être amenée a grossir dans le temps, l'approche fonctionnelle étant issue de plusieurs briques simples se sera plus agréable à gérer qu'une approche impérative trop monolithique.
+
+Think different:
+
+Exemple impératif :
+
+2 fonctions, crédit / débit :
+
+```javascript
+function credit(value) { account += value;
+}
+function debit(value) { account -= value;
+}
+var account = 0; 
+// Début de partie 
+credit(1000); 
+// Je fais des courses 
+debit(110); 
+// Le loyer tombe 
+debit(700); 
+// affiche le solde restant
+console.log(account);
+```
+
+```javascript
+const operations = [
+  // Début de partie
+  { amount: 1000, type: "credit" },
+  // Je fais des courses
+  { amount: 110, type: "debit" },
+  // Le loyer tombe
+  { amount: 700, type: "debit" },
+];
+
+const totalCreds: number = operations
+  .filter((o) => o.type == "credit") // Filtre, on conserve les opérations crédit
+  .map((c) => c.amount) // On map les valeurs "amount" du filtrage précédent
+  .reduce((amount, acc) => amount + acc); // Avec reduce on fait la somme des valeurs filtrées
+
+const totalDebs: number = operations
+  .filter((o) => o.type == "debit")
+  .map((d) => d.amount)
+  .reduce((amount, acc) => amount + acc);
+
+const account = (totalCredit: number) => (totalDebit: number) =>
+  totalCredit - totalDebit;
+
+// Affiche le solde restant
+console.log(account(totalCreds)(totalDebs));
+```
+
+On peut modifier la façon dont on pense la base de données, plutôt que de stocker la valeur account dans le temps, on ne stocke que les opérations.  
+
+Avantage de stocker les opérations plutôt que la valeur account ? :
+
+- Dans le premier cas, on fait évoluer notre compte en banque avec une suite d'instructions
+- Dans le second cas, on calcule la valeur à partir des différents
+  évènements qui se sont produits
+
+Notre BDD pourrait alors être un recueil des évènements passés sur lequel on applique des fonctions...
+
+Plus d'erreurs irréversibles ? Si une erreur d'écriture intervient (crédit au lieu de débit, mauvaise affectation de l'opération ... ) on peut simplement corriger la base et retrouver le bon amount.
+
+**Event sourcing** = on stocke les différents évènements et on va déterminer ce dont on a besoin au travers de ses évènements.
+
+[Modèle d'approvisionnement en événements](https://docs.microsoft.com/fr-fr/azure/architecture/patterns/event-sourcing)
+
+Testabilité : 
+
+- Limiter les régressions (si jamais quelqu'un modifiait le code, et ne fonctionnait plus, les tests automatisé informe de la régression)
+- Améliorer la qualité de notre code, les tests sont des crash tests pour le code. 
+
+
+
+
+
