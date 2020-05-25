@@ -1661,4 +1661,114 @@ Comment doit réagir mon programme si je lui passe un number en argument, ou une
 
 Faire des tests allant a contre courant du fonctionnement normal du programme améliore la qualité de notre code.
 
- 
+Un des problèmes de la programmation impérative est de devoir mettre le programme dans un état particulier pour réaliser des test plus poussés, souvent l'effort nécessaire à la réalisation de ces tests ou la mise en place volontaire de bugs fait que l'on réalise souvent des "tests de complaisance" .
+
+Avec la programmation fonctionnelle, le fait d'avoir des briques, il est bcp plus facile de tester en injectant des paramètres volontairement biaisés.
+
+Un paradigme qui facilite la mise en place des tests est un paradigme qui facilite la création d'un code de qualité.
+
+- **Les concepts**
+
+  - Immutabilité
+
+    pas de variables !
+
+    ```javascript
+    var students = ['Jean'];
+    students.push('Nadine'); // Mutation
+    console.log(students); // retourne ['Jean', 'Nadine']
+    ```
+
+    ```javascript
+    const students = ['Jean'];
+    const newStudents = [...students, 'Nadine'];
+    console.log(newStudents); // retourne ['Jean', 'Nadine']
+    ```
+
+    1er cas : version avec mutation, on modifie notre tableau en rajoutant Nadine. on a pas gardé d'historique des évènements.
+
+    2eme cas : On fait une constante students, on fait une nouvelle constante et on rajoute nadine. On prend le contenu du précédent tableau et on en crée un nouveau avec Nadine en plus. On limite les effets de bords en conservant les états antérieurs au prix d'une certaine lourdeur (mis en mémoire de plusieurs éléments).
+
+  - La transparence référentielle
+
+    Une expression est **référentiellement transparente** si elle peut être remplacée par sa valeur sans changer le comportement du programme. Théoriquement une fonction pure retourne toujours la même chose pour un paramètre donné, elle est transparente.
+
+    La fonction pure permet d'atteindre la transparence référentielle. 
+
+  - Fonction pure *(vs impure)*
+
+    - Ne dépend QUE des arguments
+    - Ne dépend PAS d'un état externe
+
+  - N'a donc pas d'effets de bords, dû à un changement d'état.
+
+    Exemples:
+
+    *Fonction pure :* 
+
+    ```javascript
+    function add(value: number) {
+        return value +1;
+    }
+    add(3); // -> 4
+    add(3); // -> 4
+    ```
+
+    *Fonction impure:*
+
+    ```javascript
+    let value = 3;
+    
+    function add(){
+    	value += 1;
+    	return value + 1;
+    }
+    
+    add(); // ->5
+    add(); // ->6
+    ```
+
+  - Fonctions d'ordre supérieur :
+
+    Vérifie au moins une de ces affirmations :
+
+    Prend une ou plusieurs fonctions en paramètre Retourne une fonction:
+
+    ```javascript
+    function fizz(x) { return x % 3 == 0 ? 'Fizz' : '';
+    }
+    function buzz(x) { return x % 5 == 0 ? 'Buzz' : '';
+    }
+    function fizzbuzz(x, fizz, buzz) { return fizz(x) == buzz(x) ? x : fizz(x) + buzz(x);
+    }
+    console.log([12,15,4].map(x => fizzbuzz(x, fizz, buzz)));
+    ```
+
+    fizzbuzz est une fonction d'ordre supérieur, elle prendre 2 fonctions en paramètre (fizz et buzz).
+
+    Cette composition de fonction nous permet de faire des choses plus complexes.
+
+  - L'évaluation paresseuse *(lazy evaluation)*
+
+    ```javascript
+    function fizz(x) { return x % 3 == 0 ? 'Fizz' : '';
+    }
+    function buzz(x) { return x % 5 == 0 ? 'Buzz' : '';
+    }
+    function fizzbuzzLazy(x, fizz, buzz) { return fizz(x) == '' ? x : fizz(x) + buzz(x);
+    }
+    function fizzbuzzEager(x, fizz, buzz) { return fizz == '' ? x : fizz + buzz;
+    }
+    // Fizz FizzBuzz ou nombre
+    console.log([12,15,4].map(x => fizzbuzzLazy(x, fizz, buzz)));
+    console.log([12,15,4].map(x => fizzbuzzEager(x, fizz(x), buzz(x))));
+    ```
+
+    dans `fizzbuzzLasy`:   Si `fizz(x)`est nul ('')  alors je retourne `x`, je n'évalue pas `buzz(x)`.
+
+    dans  `fizzbuzzEager`: j'évalue d'abord `fizz(x)` et `buzz(x)` et ensuite j'évalue si j'ai une chaine vide ou non.
+
+    Le fait de faire de l'évaluation paresseuse est que l'on ne va évaluer une fonction uniquement que lorsque j'ai besoin de l'évaluer et pas en amont.
+
+    
+
