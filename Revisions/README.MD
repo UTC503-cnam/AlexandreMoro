@@ -1768,7 +1768,7 @@ Un paradigme qui facilite la mise en place des tests est un paradigme qui facili
 
     dans  `fizzbuzzEager`: j'évalue d'abord `fizz(x)` et `buzz(x)` et ensuite j'évalue si j'ai une chaine vide ou non.
 
-    Le fait de faire de l'évaluation paresseuse est que l'on ne va évaluer une fonction uniquement que lorsque j'ai besoin de l'évaluer et pas en amont.
+   Faire de l'évaluation paresseuse fait que l'on ne va évaluer une fonction uniquement que lorsque j'ai besoin de l'évaluer et pas en amont.
 
     
 
