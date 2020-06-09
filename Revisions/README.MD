@@ -1770,5 +1770,49 @@ Un paradigme qui facilite la mise en place des tests est un paradigme qui facili
 
   Faire de l'évaluation paresseuse fait que l'on ne va évaluer une fonction uniquement que lorsque j'ai besoin de l'évaluer et pas en amont.
 
-    
+   
+
+  ### 05 - Prolog
+
+- Langage de haut niveau qui être capable de déduire une proposition en fonctions d'une base de connaissance préalablement énoncé.
+
+- ![image-20200605150755128](C:\Users\Alex et Rozenn\AppData\Roaming\Typora\typora-user-images\image-20200605150755128.png)
+
+- On a notre programme qui va contenir notre base de connaissance (des faits et des règles), on va lui passer des requêtes et obtenir des réponses.
+
+**Exemple :** 
+
+```prolog
+subscriber(leila, science4all).
+
+```
+
+prédicat + arguments(symboles ou variables)
+
+"Leila est une subscriber de science4all" > fait
+
+Le moteur d'inférence va faire le lien. 
+
+
+
+- Base de connaissance :
+
+**pere(jean, michel).**
+**pere(michel, georges).**
+**pere(nicolas, mael).**
+**mere(florence, mael).**
+
+***grandpere(X, Y) :- pere(X, Z), pere(Z, Y).***
+
+- X = jean
+
+***pere(X, mael)***
+
+- X = nicolas
+
+Un autre nom pour les faits et règles: les clauses.
+
+Un fait est une clause particulière
+
+- Règle avec contrainte
 

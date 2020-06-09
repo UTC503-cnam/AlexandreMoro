@@ -1,16 +1,16 @@
-interface Mesurable{
-    length: number;
+interface Mesurable {
+  length: number;
 }
 
 class Ruban implements Mesurable {
-    length: number;
-    constructor(length: number){
-        this.length = length;
-    }
+  length: number;
+  constructor(length: number) {
+    this.length = length;
+  }
 }
 
-function selectionnePetit<T extends Mesurable>(element: T, limite: number) : T {
-    return element.length < limite?element:null;
+function selectionnePetit<T extends Mesurable>(element: T, limite: number) {
+  return element.length < limite ? element : null;
 }
 
 let ruban = new Ruban(10);

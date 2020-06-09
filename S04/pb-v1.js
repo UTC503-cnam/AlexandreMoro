@@ -1,8 +1,9 @@
+// retourne x si non nul, daufaut sinon.
+// x et defaut sont des nombres.
+
 function defautSiNul(x, defaut) {
-    if (x == null)
-        return defaut;
-    else
-        return x;
+  if (x == null) return defaut;
+  else return x;
 }
 var maValeurParDefaut = 4;
 var maValeur = 1;
