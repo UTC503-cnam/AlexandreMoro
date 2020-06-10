@@ -1437,3 +1437,9 @@ node_modules/ts-node/dist/esm.js
 node_modules/ts-node/dist-raw/node-esm-resolve-implementation.js
 node_modules/typescript/lib/lib.esnext.promise.d.ts
 node_modules/typescript/lib/lib.esnext.string.d.ts
+node_modules/ts-node/esm.mjs
+node_modules/ts-node/dist/esm.d.ts
+node_modules/ts-node/dist/esm.js
+node_modules/ts-node/dist-raw/node-esm-resolve-implementation.js
+node_modules/typescript/lib/lib.esnext.promise.d.ts
+node_modules/typescript/lib/lib.esnext.string.d.ts
