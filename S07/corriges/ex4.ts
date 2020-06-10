@@ -1,4 +1,4 @@
-let numbers = [100, 34, 5, 67, 72];
+let numbersTest = [100, 34, 5, 67, 72];
 
 // Cette interface, couplée aux définitions des prototypes
 // ci-dessous permettent d'ajouter les méthodes min et max
@@ -26,13 +26,13 @@ Array.prototype.max = function <T>() {
       ? null
       : arr.length == 1
       ? arr[0]
-      : i == arr.length - 1
+      : i == arr.length - 1&
       ? arr[i]
       : Math.max(arr[i], compute_max(arr)(i + 1));
   return compute_max(this)(0);
 };
 
-let minimum = numbers.min();
-let maximum = numbers.max();
+let minimumTest = numbersTest.min();
+let maximumTest = numbersTest.max();
 
 console.log(`Min is ${minimum}, max is ${maximum}`);
