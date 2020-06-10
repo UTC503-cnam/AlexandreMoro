@@ -319,7 +319,7 @@ node_modules/yn/license
 node_modules/yn/package.json
 node_modules/yn/readme.md
 
-S08/*.js
+
 node_modules/@types/node/assert.d.ts
 node_modules/@types/node/async_hooks.d.ts
 node_modules/@types/node/base.d.ts
@@ -1425,6 +1425,18 @@ node_modules/lodash/fp/zipObj.js
 node_modules/lodash/fp/zipObject.js
 node_modules/lodash/fp/zipObjectDeep.js
 node_modules/lodash/fp/zipWith.js
+node_modules/ts-node/esm.mjs
+node_modules/ts-node/dist/esm.d.ts
+node_modules/ts-node/dist/esm.js
+node_modules/ts-node/dist-raw/node-esm-resolve-implementation.js
+node_modules/typescript/lib/lib.esnext.promise.d.ts
+node_modules/typescript/lib/lib.esnext.string.d.ts
+node_modules/ts-node/esm.mjs
+node_modules/ts-node/dist/esm.d.ts
+node_modules/ts-node/dist/esm.js
+node_modules/ts-node/dist-raw/node-esm-resolve-implementation.js
+node_modules/typescript/lib/lib.esnext.promise.d.ts
+node_modules/typescript/lib/lib.esnext.string.d.ts
 node_modules/ts-node/esm.mjs
 node_modules/ts-node/dist/esm.d.ts
 node_modules/ts-node/dist/esm.js
