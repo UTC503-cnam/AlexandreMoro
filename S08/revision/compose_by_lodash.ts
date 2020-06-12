@@ -8,8 +8,7 @@ let doubleR = (x: number) => x * 2;
 let halfR = (x: number) => x / 2;
 let square_rootR = (x: number) => Math.sqrt(x);
 
-const composeR = (x: number) =>
-  fp.compose(squareR(x), doubleR(x), halfR(x), square_rootR(x));
+const composeR = fp.compose(squareR, doubleR, halfR, square_rootR);
 
 // Utilisez une fonction de lodash pour composer
-console.log("sqrt((10*10) * 2 / 2) = " + composeR(10));
+console.log(`sqrt((10*10) * 2 / 2) =  ${composeR(10)}`);

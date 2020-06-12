@@ -4,10 +4,10 @@
 
 var fp = require("lodash/fp");
 
-let squared = (x) => x * x;
-let doubled = (x) => x * 2;
-let halfed = (x) => x / 2;
-let squared_root = (x) => Math.sqrt(x);
+let squared = (x: number) => x * x;
+let doubled = (x: number) => x * 2;
+let halfed = (x: number) => x / 2;
+let squared_root = (x: number) => Math.sqrt(x);
 
 // Utilisez une fonction de lodash pour composer
 
