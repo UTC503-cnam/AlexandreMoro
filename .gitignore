@@ -1455,3 +1455,11 @@ node_modules/ts-node/dist/esm.js
 node_modules/ts-node/dist-raw/node-esm-resolve-implementation.js
 node_modules/typescript/lib/lib.esnext.promise.d.ts
 node_modules/typescript/lib/lib.esnext.string.d.ts
+Examen/card.ts
+Examen/classe.ts
+Examen/exam.ts
+Examen/gems.ts
+Examen/progf.ts
+Examen/qcm.ts
+Examen/slug.ts
+Examen/test.ts
